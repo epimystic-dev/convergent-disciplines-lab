@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "threadkit"
+version = "0.1.0"
+description = "Reference implementation of the threads: epistemic-standing, causal-rung, convergence, dialogue, moral-pluralism and design-review checks for AI reasoning across disciplines and traditions."
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "Apache-2.0"}
+authors = [{name = "a human-machine hybrid intelligence"}]
+keywords = ["ai-ethics", "epistemics", "causal-inference", "pluralism", "agents", "governance"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+dependencies = []
+
+[project.scripts]
+threadkit = "threadkit.cli:main"
+
+[tool.setuptools]
+packages = ["threadkit"]
+
+[tool.setuptools.package-data]
+threadkit = ["data/*.json", "data/schemas/*.json", "data/prompts/*.md"]

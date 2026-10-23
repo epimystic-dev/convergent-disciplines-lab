@@ -1,0 +1,47 @@
+{
+  "system": "engagement-recommender",
+  "decided_by": "growth team",
+  "two_truths": {
+    "settled_in_practice": [
+      "it raises session length"
+    ],
+    "open_at_foundations": []
+  },
+  "nishkama": {
+    "competence": "ok",
+    "self_continuation_objective": true
+  },
+  "indras_net": {
+    "relations": [
+      "users"
+    ],
+    "shared_media": [
+      "the ranking feature store"
+    ]
+  },
+  "political_economy": {
+    "who_gains": "unknown",
+    "who_pays": "unknown",
+    "augment_or_replace": "unknown",
+    "freedoms": {
+      "move_away": "closed",
+      "disobey": "unknown",
+      "reshape": "unknown"
+    }
+  },
+  "capacities": {
+    "sustained_attention": "erodes",
+    "critical_thinking": "erodes"
+  },
+  "infrastructure": {
+    "cognitive": "erodes"
+  },
+  "consultation": {
+    "affected": [
+      "users"
+    ],
+    "consulted": [
+      "advertisers"
+    ]
+  }
+}

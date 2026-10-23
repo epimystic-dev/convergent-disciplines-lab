@@ -1,0 +1,30 @@
+{
+  "id": "dec-migration",
+  "decision": "Migrate the billing service to the new database this quarter",
+  "stakes": "high",
+  "decided_by": "platform lead",
+  "date": "2026-10-23",
+  "level": "practical",
+  "estimate": "eight weeks",
+  "reference_class": {
+    "class": "database migrations of comparable services",
+    "base_rate": "median overrun about 50 per cent",
+    "source": "internal project records"
+  },
+  "premortem": [
+    "data drift between old and new stores went unnoticed",
+    "rollback path was never rehearsed"
+  ],
+  "alternatives_discarded": [
+    "defer to next quarter",
+    "migrate read path only"
+  ],
+  "adversarial_check": {
+    "by": "reliability engineer",
+    "finding": "rollback rehearsal added as a gate"
+  },
+  "diversification": [
+    "estimate taken independently from two teams"
+  ],
+  "revisit_after": "2026-12-01"
+}

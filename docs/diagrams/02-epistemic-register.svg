@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="1200" height="640" font-family="Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">The epistemic register</title>
+<desc id="d">Six standings a claim can have, from settled to method note, each with the wording it may be asserted in, and how the answer governor holds wording to standing.</desc>
+<defs><marker id="a-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker><marker id="a-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b42318"/></marker><marker id="a-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1a7f37"/></marker><marker id="a-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9a6700"/></marker><marker id="a-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3567c8"/></marker><marker id="a-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b86e00"/></marker><marker id="a-violet" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6639ba"/></marker></defs>
+<rect x="0" y="0" width="1200" height="640" fill="#ffffff"/>
+<text x="28.0" y="40.0" font-size="22.0" fill="#1f2328" text-anchor="start" font-weight="700">How much weight can this claim bear? The six registers (M1)</text>
+<text x="28.0" y="64.0" font-size="13.5" fill="#57606a" text-anchor="start">The book opens many paragraphs with a glyph that records the standing of its claim. The threads make that a field on every claim; the wording must fit it.</text>
+<rect x="28.0" y="112.0" width="362.0" height="190.0" rx="6" fill="#e8f5ec" stroke="#1a7f37" stroke-width="1.2"/>
+<text x="44.0" y="142.0" font-size="17.0" fill="#1a7f37" text-anchor="start" font-weight="700">[settled]</text>
+<text x="44.0" y="166.0" font-size="12.5" fill="#1f2328" text-anchor="start" font-weight="700">settled / cross-tradition consensus</text>
+<text x="44.0" y="204.0" font-size="12.0" fill="#57606a" text-anchor="start">Assert as: plain assertion, with a source if asked</text>
+<text x="44.0" y="252.0" font-size="12.0" fill="#1f2328" text-anchor="start">&quot;Water boils at 100 C at sea level.&quot;</text>
+<rect x="405.0" y="112.0" width="362.0" height="190.0" rx="6" fill="#eaf1fd" stroke="#3567c8" stroke-width="1.2"/>
+<text x="421.0" y="142.0" font-size="17.0" fill="#3567c8" text-anchor="start" font-weight="700">[established]</text>
+<text x="421.0" y="166.0" font-size="12.5" fill="#1f2328" text-anchor="start" font-weight="700">well-established but framework-laden</text>
+<text x="421.0" y="204.0" font-size="12.0" fill="#57606a" text-anchor="start">Assert as: assertion that names the framework it</text>
+<text x="421.0" y="219.6" font-size="12.0" fill="#57606a" text-anchor="start">holds within</text>
+<text x="421.0" y="252.0" font-size="12.0" fill="#1f2328" text-anchor="start">&quot;Within structural causal models, rung-2 claims need</text>
+<text x="421.0" y="267.6" font-size="12.0" fill="#1f2328" text-anchor="start">a graph.&quot;</text>
+<rect x="782.0" y="112.0" width="362.0" height="190.0" rx="6" fill="#fff8e1" stroke="#9a6700" stroke-width="1.2"/>
+<text x="798.0" y="142.0" font-size="17.0" fill="#9a6700" text-anchor="start" font-weight="700">[contested]</text>
+<text x="798.0" y="166.0" font-size="12.5" fill="#1f2328" text-anchor="start" font-weight="700">live contention / open disagreement</text>
+<text x="798.0" y="204.0" font-size="12.0" fill="#57606a" text-anchor="start">Assert as: attributed positions, never a bare</text>
+<text x="798.0" y="219.6" font-size="12.0" fill="#57606a" text-anchor="start">verdict</text>
+<text x="798.0" y="252.0" font-size="12.0" fill="#1f2328" text-anchor="start">&quot;Compatibilists hold that free will survives</text>
+<text x="798.0" y="267.6" font-size="12.0" fill="#1f2328" text-anchor="start">determinism; hard incompatibilists deny it.&quot;</text>
+<rect x="28.0" y="318.0" width="362.0" height="190.0" rx="6" fill="#fdecea" stroke="#b42318" stroke-width="1.2"/>
+<text x="44.0" y="348.0" font-size="17.0" fill="#b42318" text-anchor="start" font-weight="700">[limit]</text>
+<text x="44.0" y="372.0" font-size="12.5" fill="#1f2328" text-anchor="start" font-weight="700">overreach / anomaly / hard limit</text>
+<text x="44.0" y="410.0" font-size="12.0" fill="#57606a" text-anchor="start">Assert as: an explicit warning or qualification</text>
+<text x="44.0" y="458.0" font-size="12.0" fill="#1f2328" text-anchor="start">&quot;No randomised trial long enough to settle this</text>
+<text x="44.0" y="473.6" font-size="12.0" fill="#1f2328" text-anchor="start">exists.&quot;</text>
+<rect x="405.0" y="318.0" width="362.0" height="190.0" rx="6" fill="#f3eefc" stroke="#6639ba" stroke-width="1.2"/>
+<text x="421.0" y="348.0" font-size="17.0" fill="#6639ba" text-anchor="start" font-weight="700">[bridge]</text>
+<text x="421.0" y="372.0" font-size="12.5" fill="#1f2328" text-anchor="start" font-weight="700">metaphysical commitment / bridge across</text>
+<text x="421.0" y="388.2" font-size="12.5" fill="#1f2328" text-anchor="start" font-weight="700">traditions</text>
+<text x="421.0" y="410.0" font-size="12.0" fill="#57606a" text-anchor="start">Assert as: 'on this view' or 'the argument here is',</text>
+<text x="421.0" y="425.6" font-size="12.0" fill="#57606a" text-anchor="start">never 'it is known'</text>
+<text x="421.0" y="458.0" font-size="12.0" fill="#1f2328" text-anchor="start">&quot;On this view, relation comes before substance.&quot;</text>
+<rect x="782.0" y="318.0" width="362.0" height="190.0" rx="6" fill="#f6f8fa" stroke="#8c959f" stroke-width="1.2"/>
+<text x="798.0" y="348.0" font-size="17.0" fill="#8c959f" text-anchor="start" font-weight="700">[method]</text>
+<text x="798.0" y="372.0" font-size="12.5" fill="#1f2328" text-anchor="start" font-weight="700">acknowledged limit / method note / external</text>
+<text x="798.0" y="388.2" font-size="12.5" fill="#1f2328" text-anchor="start" font-weight="700">supplement</text>
+<text x="798.0" y="410.0" font-size="12.0" fill="#57606a" text-anchor="start">Assert as: a method note</text>
+<text x="798.0" y="458.0" font-size="12.0" fill="#1f2328" text-anchor="start">&quot;This overview draws mainly on English-language</text>
+<text x="798.0" y="473.6" font-size="12.0" fill="#1f2328" text-anchor="start">sources.&quot;</text>
+<rect x="28.0" y="532.0" width="1144.0" height="86.0" rx="6" fill="#fdecea" stroke="#b42318" stroke-width="1.2"/>
+<text x="44.0" y="558.0" font-size="14.0" fill="#b42318" text-anchor="start" font-weight="700">What the governor refuses</text>
+<text x="44.0" y="580.0" font-size="12.5" fill="#1f2328" text-anchor="start">proof language (proves, certainly, beyond doubt) on a contested, bridge, limit or method claim (REG-001); a settled claim resting on an own thesis (REG-002) or on a</text>
+<text x="44.0" y="596.2" font-size="12.5" fill="#1f2328" text-anchor="start">convergence graded only partial (REG-003); a self-report asserted as fact with no outside check (REG-006); a foundational claim asserted as settled (REG-009).</text>
+</svg>

@@ -1,0 +1,59 @@
+{
+  "id": "cv-relation",
+  "shape": "What we call things are better described as patterns of relation than as substances with intrinsic properties.",
+  "routes": [
+    {
+      "id": "r-physics",
+      "tradition": "relational quantum mechanics",
+      "method": "mathematical physics",
+      "validation": "experiment and formal consistency",
+      "cosmology": "naturalistic",
+      "problem": "the measurement problem",
+      "distinct_content": "properties exist only relative to interacting systems"
+    },
+    {
+      "id": "r-madhyamaka",
+      "tradition": "Madhyamaka",
+      "method": "dialectical refutation",
+      "validation": "debate and contemplative practice",
+      "cosmology": "Buddhist soteriology",
+      "problem": "the cause of suffering",
+      "distinct_content": "phenomena are empty of inherent existence and arise dependently"
+    },
+    {
+      "id": "r-autopoiesis",
+      "tradition": "systems biology",
+      "method": "biological modelling",
+      "validation": "laboratory biology",
+      "cosmology": "naturalistic, organism-centred",
+      "problem": "what makes a living system",
+      "distinct_content": "a living system is a network that produces its own components"
+    },
+    {
+      "id": "r-process",
+      "tradition": "process metaphysics",
+      "method": "speculative metaphysics",
+      "validation": "coherence and adequacy",
+      "cosmology": "panexperientialist",
+      "problem": "the bifurcation of nature",
+      "distinct_content": "actual occasions of becoming integrate their past and perish"
+    }
+  ],
+  "upstream_links": [
+    {
+      "between": [
+        "r-process",
+        "r-physics"
+      ],
+      "kind": "direct_influence",
+      "note": "the process philosopher had read the early quantum physicists"
+    }
+  ],
+  "disagreements_preserved": [
+    "which relational ontology is right",
+    "whether the web of relations has a ground"
+  ],
+  "declared_grade": "strong",
+  "falsifier": "a shared upstream source among the remaining routes, or a flattened difference whose restoration dissolves the agreement",
+  "independent_audit": false
+}

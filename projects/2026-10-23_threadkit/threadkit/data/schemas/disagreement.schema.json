@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/epimystic-dev/convergent-disciplines-lab/threads/schemas/disagreement.schema.json",
+  "title": "Preserved disagreement",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "question": {
+      "type": "string",
+      "minLength": 1
+    },
+    "positions": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "properties": {
+          "holder": {
+            "type": "string",
+            "minLength": 1
+          },
+          "position": {
+            "type": "string",
+            "minLength": 1
+          },
+          "grounds": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "holder",
+          "position"
+        ]
+      }
+    },
+    "status": {
+      "enum": [
+        "open",
+        "partly_addressed",
+        "resolved"
+      ]
+    },
+    "resolution": {
+      "type": "object",
+      "properties": {
+        "evidence": {
+          "type": "string",
+          "minLength": 1
+        },
+        "by": {
+          "type": "string",
+          "minLength": 1
+        },
+        "date": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "evidence",
+        "by",
+        "date"
+      ]
+    },
+    "chapters": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 29
+      }
+    }
+  },
+  "required": [
+    "id",
+    "question",
+    "positions",
+    "status"
+  ],
+  "additionalProperties": false
+}

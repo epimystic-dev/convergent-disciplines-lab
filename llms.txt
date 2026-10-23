@@ -1,0 +1,35 @@
+# convergent-disciplines-lab
+
+> A machine-readable reasoning discipline for AI systems that work across disciplines and
+> traditions: the method and fifty-eight operational lessons of "The Convergent Threads: A
+> Synthesis for the Age of Mind" (CC-BY-SA-4.0), with data contracts, drop-in prompts, a
+> reference implementation and adoption instructions. The lessons are rules with tests, not a
+> certification, and they never override an existing safety policy.
+
+Read first: the ingest protocol in threads/threads.json (key "ingest_protocol"), then the method lessons M1-M7.
+
+## Data
+
+- [threads/threads.json](threads/threads.json): registers, method, convergences, disagreements, moral convergences and disagreements, frameworks, 58 lessons, glossary, ingest protocol, limits
+- [threads/threads.schema.json](threads/threads.schema.json): schema for threads.json
+- [threads/schemas/](threads/schemas/): ten data contracts for answers, claims, convergences, disagreements, explanations, dialogues, decisions, design reviews, consensus and agent policies
+- [threads/README.md](threads/README.md): field-by-field description
+
+## Prompts
+
+- [threads/prompts/threads-system-prompt.md](threads/prompts/threads-system-prompt.md): drop-in system prompt (seventeen rules)
+- [threads/prompts/threads-agent-addendum.md](threads/prompts/threads-agent-addendum.md): addendum for tool-using and multi-agent systems
+- [threads/prompts/README.md](threads/prompts/README.md): what a prompt can and cannot carry; six probes
+
+## Code
+
+- [projects/2026-10-23_threadkit/](projects/2026-10-23_threadkit/): reference implementation and CLI (standard-library Python)
+
+## Docs
+
+- [docs/IMPLEMENTING.md](docs/IMPLEMENTING.md): how to adopt the threads, layer by layer
+- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md): the architecture and its trust boundaries
+- [docs/WHAT-AI-GAINS.md](docs/WHAT-AI-GAINS.md): failure modes, lessons, tests
+- [docs/LESSONS.md](docs/LESSONS.md): the full catalogue in Markdown (generated)
+- [docs/RESEARCH.md](docs/RESEARCH.md): the book's method and argument, and how this lab read it
+- [NOTICE.md](NOTICE.md): source, licence (ShareAlike) and changes

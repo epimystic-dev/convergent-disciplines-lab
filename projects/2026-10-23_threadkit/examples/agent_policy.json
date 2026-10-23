@@ -1,0 +1,8 @@
+{
+  "agent": "procurement-agent",
+  "nice": true,
+  "forgive_after": 1,
+  "provokable": true,
+  "published": true,
+  "log_violations": true
+}

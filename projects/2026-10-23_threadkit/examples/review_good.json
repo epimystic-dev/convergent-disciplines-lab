@@ -1,0 +1,99 @@
+{
+  "system": "civic-deliberation-assistant",
+  "date": "2026-10-23",
+  "decided_by": "city digital office",
+  "two_truths": {
+    "settled_in_practice": [
+      "it summarises submissions accurately enough for staff review"
+    ],
+    "open_at_foundations": [
+      "whether summarisation shifts what residents think deliberation is"
+    ]
+  },
+  "nishkama": {
+    "competence": "summaries are tested against staff-written summaries every week",
+    "outcome_stake": "the vendor is paid per contract, not per engagement",
+    "self_continuation_objective": false
+  },
+  "indras_net": {
+    "relations": [
+      "residents",
+      "council staff",
+      "community groups",
+      "the vendor"
+    ],
+    "shared_media": [
+      "the submissions archive"
+    ],
+    "shared_media_audited": true,
+    "speaking_from": "a city office in one language"
+  },
+  "political_economy": {
+    "who_gains": "residents get faster responses; staff save reading time",
+    "who_pays": "the city budget; community groups who must check summaries",
+    "augment_or_replace": "augment",
+    "freedoms": {
+      "move_away": "kept",
+      "disobey": "kept",
+      "reshape": "kept"
+    },
+    "commons": {
+      "data": "re_embeds",
+      "compute": "neutral",
+      "weights": "neutral",
+      "attention": "neutral"
+    }
+  },
+  "capacities": {
+    "sustained_attention": "neutral",
+    "critical_thinking": "supports",
+    "communicative_competence": "supports"
+  },
+  "infrastructure": {
+    "cognitive": "supports",
+    "institutional": "supports",
+    "narrative": "neutral"
+  },
+  "sdt": {
+    "well_being": "neutral",
+    "elite_competition": "neutral",
+    "fiscal_health": "neutral"
+  },
+  "ostrom": {
+    "boundaries": "met",
+    "congruent_rules": "met",
+    "collective_choice": "met",
+    "accountable_monitoring": "met",
+    "graduated_sanctions": "met",
+    "conflict_resolution": "met",
+    "right_to_organise": "met",
+    "nesting": "met"
+  },
+  "layers_covered": [
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "L5"
+  ],
+  "consultation": {
+    "affected": [
+      "residents",
+      "community groups"
+    ],
+    "consulted": [
+      "residents",
+      "community groups"
+    ],
+    "drafted_by": [
+      "council staff",
+      "residents"
+    ]
+  },
+  "open_questions": {
+    "moral_patient": "open; no design choice presupposes an answer",
+    "net_effect": "measured quarterly",
+    "alignment_adequate": "reviewed by an external auditor",
+    "institution_adequate": "open"
+  }
+}

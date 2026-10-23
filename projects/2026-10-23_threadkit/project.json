@@ -1,0 +1,13 @@
+{
+  "name": "threadkit",
+  "slug": "2026-10-23_threadkit",
+  "kind": "cli",
+  "one_liner": "Reference implementation of the threads' fifty-eight lessons for AI reasoning across disciplines and traditions: an answer governor that holds every claim to its epistemic standing and causal rung, a convergence assessor that grades agreement by the independence of its routes, a dialogue linter for the points of defeat, a moral-pluralism check, debiasing decision records, lineage-bound reputation, diversity-weighted consensus, a four-move design review and a deployment audit.",
+  "problem": "Language models speak every sentence in one confident register: contested claims sound settled, correlations become recommendations, many sources repeating one become a consensus, and traditions are flattened into 'they all say the same thing'. The synthesis behind the threads states the discipline that prevents this: mark the standing of each claim, count agreement only across independent routes, agree on shape and keep content plural, keep open what is open. threadkit turns that discipline into checks over structured answer, convergence, dialogue, decision and design-review records, so a system's output can be held to it before a person sees it.",
+  "language": "python",
+  "test_cmd": "python -m unittest discover -s tests",
+  "build_cmd": "python -m pip install -e .",
+  "deps": [],
+  "license": "Apache-2.0",
+  "clean_room": "The checks are implemented from the lessons in threads/threads.json, which paraphrase the method and arguments of the source book (CC-BY-SA-4.0), adapted as recorded in NOTICE.md. The module design, data contracts, finding rules and heuristics are this lab's own. No third-party implementation was read, vendored or mirrored."
+}

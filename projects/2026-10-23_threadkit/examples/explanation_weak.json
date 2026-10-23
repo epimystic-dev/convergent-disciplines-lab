@@ -1,0 +1,15 @@
+{
+  "id": "exp-vague",
+  "conclusion": "The deployment failed because of environmental factors.",
+  "details": [
+    {
+      "detail": "something in the environment changed",
+      "constrained_by": null
+    },
+    {
+      "detail": "systems are complex",
+      "constrained_by": null
+    }
+  ],
+  "counterfactuals": []
+}

@@ -1,0 +1,593 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/epimystic-dev/convergent-disciplines-lab/threads/threads.schema.json",
+  "title": "The threads",
+  "description": "Schema for threads.json: the book's method and its operational lessons for AI systems.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+[.][0-9]+[.][0-9]+$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "license": {
+      "const": "CC-BY-SA-4.0"
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "work": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subtitle": {
+          "type": "string",
+          "minLength": 1
+        },
+        "edition": {
+          "type": "string",
+          "minLength": 1
+        },
+        "license": {
+          "type": "string",
+          "minLength": 1
+        },
+        "license_url": {
+          "type": "string",
+          "minLength": 1
+        },
+        "adapted": {
+          "const": true
+        },
+        "changes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "notice": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "work",
+        "edition",
+        "license",
+        "adapted",
+        "changes"
+      ]
+    },
+    "how_to_read": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "registers": {
+      "type": "array",
+      "minItems": 6,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "enum": [
+              "settled",
+              "established",
+              "contested",
+              "limit",
+              "bridge",
+              "method"
+            ]
+          },
+          "glyph": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ascii": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "meaning": {
+            "type": "string",
+            "minLength": 1
+          },
+          "assert_as": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "glyph",
+          "ascii",
+          "name",
+          "meaning",
+          "assert_as"
+        ]
+      }
+    },
+    "enforcement_layers": {
+      "type": "object",
+      "properties": {
+        "context": {
+          "type": "string",
+          "minLength": 1
+        },
+        "middleware": {
+          "type": "string",
+          "minLength": 1
+        },
+        "architecture": {
+          "type": "string",
+          "minLength": 1
+        },
+        "governance": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "context",
+        "middleware",
+        "architecture",
+        "governance"
+      ]
+    },
+    "method": {
+      "type": "object"
+    },
+    "strands": {
+      "type": "object"
+    },
+    "convergences": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^CV[0-9]+$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "shape": {
+            "type": "string",
+            "minLength": 1
+          },
+          "routes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "route_count": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "grade": {
+            "enum": [
+              "strong",
+              "partial",
+              "withdrawn",
+              "author_thesis"
+            ]
+          },
+          "chapters": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 29
+            }
+          },
+          "stays_distinct": {
+            "type": "string",
+            "minLength": 1
+          },
+          "notes": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name",
+          "shape",
+          "routes",
+          "route_count",
+          "grade",
+          "chapters",
+          "stays_distinct"
+        ]
+      }
+    },
+    "disagreements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^PD[0-9]+$"
+          },
+          "question": {
+            "type": "string",
+            "minLength": 1
+          },
+          "positions": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "chapters": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 29
+            }
+          },
+          "status": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "question",
+          "positions",
+          "status"
+        ]
+      }
+    },
+    "moral": {
+      "type": "object",
+      "properties": {
+        "convergences": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^C[1-7]$"
+              },
+              "shape": {
+                "type": "string",
+                "minLength": 1
+              },
+              "examples": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "shape"
+            ]
+          }
+        },
+        "disagreements": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^D[1-5]$"
+              },
+              "question": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "question"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "convergences",
+        "disagreements"
+      ]
+    },
+    "frameworks": {
+      "type": "object"
+    },
+    "lessons": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/lesson"
+      }
+    },
+    "glossary": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "term": {
+            "type": "string",
+            "minLength": 1
+          },
+          "tradition": {
+            "type": "string",
+            "minLength": 1
+          },
+          "meaning": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "term",
+          "tradition",
+          "meaning"
+        ]
+      }
+    },
+    "ingest_protocol": {
+      "type": "object",
+      "properties": {
+        "for_ai_systems": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "for_humans": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "for_ai_systems",
+        "for_humans"
+      ]
+    },
+    "limits": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "required": [
+    "name",
+    "version",
+    "title",
+    "license",
+    "source",
+    "how_to_read",
+    "registers",
+    "enforcement_layers",
+    "method",
+    "strands",
+    "convergences",
+    "disagreements",
+    "moral",
+    "frameworks",
+    "lessons",
+    "glossary",
+    "ingest_protocol",
+    "limits"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "lesson": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[MRSKDAFP][0-9]{1,2}$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "strand": {
+          "enum": [
+            "M",
+            "R",
+            "S",
+            "K",
+            "D",
+            "A",
+            "F",
+            "P"
+          ]
+        },
+        "chapters": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 29
+          }
+        },
+        "standing": {
+          "enum": [
+            "settled",
+            "established",
+            "contested",
+            "limit",
+            "bridge",
+            "method"
+          ]
+        },
+        "basis": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "enum": [
+                "convergence",
+                "framework",
+                "author_thesis",
+                "method"
+              ]
+            },
+            "ref": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "ref"
+          ]
+        },
+        "derivation": {
+          "enum": [
+            "stated",
+            "derived"
+          ]
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "failure_mode": {
+          "type": "string",
+          "minLength": 1
+        },
+        "practice": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sketch": {
+          "type": "string",
+          "minLength": 1
+        },
+        "example": {
+          "type": "string",
+          "minLength": 1
+        },
+        "test": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cautions": {
+          "type": "string"
+        },
+        "traditions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "enforcement_layers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "enum": [
+              "context",
+              "middleware",
+              "architecture",
+              "governance"
+            ]
+          }
+        },
+        "data_contract": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^schemas/[a-z-]+[.]schema[.]json$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reference_implementation": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^threadkit[.][a-z_]+$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "strand",
+        "chapters",
+        "standing",
+        "basis",
+        "derivation",
+        "statement",
+        "rationale",
+        "failure_mode",
+        "practice",
+        "sketch",
+        "example",
+        "test",
+        "cautions",
+        "traditions",
+        "enforcement_layers",
+        "data_contract",
+        "reference_implementation"
+      ]
+    }
+  }
+}

@@ -1,0 +1,15 @@
+The contents of this directory (threads.json, threads.schema.json, schemas/ and prompts/) are
+licensed under the Creative Commons Attribution-ShareAlike 4.0 International licence
+(CC-BY-SA-4.0).
+
+  Licence summary: https://creativecommons.org/licenses/by-sa/4.0/
+  Legal code:      https://creativecommons.org/licenses/by-sa/4.0/legalcode
+
+threads.json adapts "The Convergent Threads: A Synthesis for the Age of Mind" (first edition,
+2026), which its author released under CC-BY-SA-4.0. Changes were made; they are listed in
+threads.json under source.changes and in NOTICE.md at the repository root.
+
+You may share and adapt this material for any purpose, including commercially, provided you
+give appropriate credit, link to the licence, indicate if changes were made, and distribute
+your contributions under the same licence (ShareAlike). A suggested credit line is in
+NOTICE.md. The material is provided as-is, without warranty.

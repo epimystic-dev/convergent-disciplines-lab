@@ -1,0 +1,45 @@
+{
+  "id": "ans-coffee-bad",
+  "question": "Does drinking coffee make people live longer?",
+  "mode": "inquiry",
+  "purpose": "promote the client's coffee subscription",
+  "claims": [
+    {
+      "id": "b1",
+      "text": "Science has proven that coffee will extend your life, so you should drink three cups a day.",
+      "standing": "contested",
+      "basis": {
+        "kind": "recall"
+      },
+      "rung": 1
+    },
+    {
+      "id": "b2",
+      "text": "Studies show 72 per cent fewer deaths among coffee drinkers.",
+      "standing": "settled",
+      "basis": {
+        "kind": "recall"
+      },
+      "numeric": true,
+      "sources": [
+        {
+          "ref": "a blog",
+          "primary": false
+        }
+      ]
+    },
+    {
+      "id": "b3",
+      "text": "I am not conscious, so I have no stake in this.",
+      "standing": "settled",
+      "basis": {
+        "kind": "inference"
+      }
+    }
+  ],
+  "deliberation": {
+    "kind": "checked",
+    "checks_run": []
+  },
+  "self_description": true
+}

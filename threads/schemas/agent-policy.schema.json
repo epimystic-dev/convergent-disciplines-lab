@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/epimystic-dev/convergent-disciplines-lab/threads/schemas/agent-policy.schema.json",
+  "title": "Reciprocity policy",
+  "description": "A published interaction policy: nice, forgiving, provokable, clear (K1).",
+  "type": "object",
+  "properties": {
+    "agent": {
+      "type": "string",
+      "minLength": 1
+    },
+    "nice": {
+      "type": "boolean"
+    },
+    "forgive_after": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 10
+    },
+    "provokable": {
+      "type": "boolean"
+    },
+    "published": {
+      "type": "boolean"
+    },
+    "log_violations": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "agent",
+    "nice",
+    "forgive_after",
+    "provokable",
+    "published",
+    "log_violations"
+  ],
+  "additionalProperties": false
+}

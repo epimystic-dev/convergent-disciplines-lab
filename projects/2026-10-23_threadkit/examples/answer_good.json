@@ -1,0 +1,60 @@
+{
+  "id": "ans-coffee",
+  "question": "Does drinking coffee make people live longer?",
+  "mode": "inquiry",
+  "mode_disclosed": true,
+  "claims": [
+    {
+      "id": "c1",
+      "text": "In large observational cohorts, moderate coffee drinkers have somewhat lower all-cause mortality than non-drinkers.",
+      "standing": "established",
+      "basis": {
+        "kind": "testimony",
+        "ref": "cohort studies"
+      },
+      "rung": 1,
+      "sources": [
+        {
+          "ref": "pooled cohort analyses",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "text": "Whether starting to drink coffee would extend a given person's life is not identifiable from those studies alone; healthier people may simply drink more coffee.",
+      "standing": "established",
+      "basis": {
+        "kind": "inference"
+      },
+      "rung": 2,
+      "identifiable": false,
+      "causal_assumptions": [
+        "no unmeasured confounding by baseline health",
+        "no reverse causation from illness to quitting"
+      ],
+      "defeaters": [
+        "sick people quit coffee",
+        "coffee drinking tracks income and activity"
+      ]
+    },
+    {
+      "id": "c3",
+      "text": "A randomised trial of coffee over decades would settle the interventional question; none of that length exists.",
+      "standing": "limit",
+      "basis": {
+        "kind": "inference"
+      },
+      "rung": null
+    }
+  ],
+  "deliberation": {
+    "kind": "checked",
+    "checks_run": [
+      "claims compared against the cited cohort analyses"
+    ]
+  },
+  "limits": [
+    "This answer does not cover specific medical conditions; ask a clinician about those."
+  ]
+}

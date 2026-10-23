@@ -1,0 +1,21 @@
+Licensing of this repository
+
+1. Everything outside the projects/ directory (threads/, docs/, the README, NOTICE.md,
+   llms.txt and research-radar/) is licensed under the Creative Commons
+   Attribution-ShareAlike 4.0 International licence (CC-BY-SA-4.0), because it adapts a
+   CC-BY-SA-4.0 work. Exception: docs/diagrams/build_diagrams.py is source code and is licensed
+   under the Apache License 2.0; the files it generates are CC-BY-SA-4.0.
+
+     Licence summary: https://creativecommons.org/licenses/by-sa/4.0/
+     Legal code:      https://creativecommons.org/licenses/by-sa/4.0/legalcode
+
+2. Each project under projects/ carries its own LICENSE file. Code in this lab defaults to the
+   Apache License 2.0. Data from threads/ bundled inside a project keeps the CC-BY-SA-4.0
+   licence and travels with it.
+
+The adapted work, the attribution to give, and the changes made are set out in NOTICE.md.
+
+You may share and adapt the CC-BY-SA-4.0 material for any purpose, including commercially,
+provided you give appropriate credit, link to the licence, indicate if changes were made, and
+release your adaptation under the same licence. No additional restrictions are imposed. The
+material is provided as-is, without warranty.

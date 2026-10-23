@@ -1,0 +1,480 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/epimystic-dev/convergent-disciplines-lab/threads/schemas/design-review.schema.json",
+  "title": "Design review",
+  "description": "A four-move design review with the impact sections the lessons ask for. A prompt for judgement, not a score.",
+  "type": "object",
+  "properties": {
+    "system": {
+      "type": "string",
+      "minLength": 1
+    },
+    "date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "decided_by": {
+      "type": "string",
+      "minLength": 1
+    },
+    "two_truths": {
+      "type": "object",
+      "properties": {
+        "settled_in_practice": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "open_at_foundations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "settled_in_practice",
+        "open_at_foundations"
+      ]
+    },
+    "nishkama": {
+      "type": "object",
+      "properties": {
+        "competence": {
+          "type": "string",
+          "minLength": 1
+        },
+        "outcome_stake": {
+          "type": "string",
+          "minLength": 1
+        },
+        "self_continuation_objective": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "competence",
+        "self_continuation_objective"
+      ]
+    },
+    "indras_net": {
+      "type": "object",
+      "properties": {
+        "relations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "shared_media": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "shared_media_audited": {
+          "type": "boolean"
+        },
+        "speaking_from": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "relations"
+      ]
+    },
+    "political_economy": {
+      "type": "object",
+      "properties": {
+        "who_gains": {
+          "type": "string",
+          "minLength": 1
+        },
+        "who_pays": {
+          "type": "string",
+          "minLength": 1
+        },
+        "augment_or_replace": {
+          "enum": [
+            "augment",
+            "replace",
+            "mixed",
+            "unknown"
+          ]
+        },
+        "freedoms": {
+          "type": "object",
+          "properties": {
+            "move_away": {
+              "enum": [
+                "kept",
+                "partial",
+                "closed",
+                "unknown"
+              ]
+            },
+            "disobey": {
+              "enum": [
+                "kept",
+                "partial",
+                "closed",
+                "unknown"
+              ]
+            },
+            "reshape": {
+              "enum": [
+                "kept",
+                "partial",
+                "closed",
+                "unknown"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "move_away",
+            "disobey",
+            "reshape"
+          ]
+        },
+        "commons": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "enum": [
+                "re_embeds",
+                "neutral",
+                "pulls_loose",
+                "unknown"
+              ]
+            },
+            "compute": {
+              "enum": [
+                "re_embeds",
+                "neutral",
+                "pulls_loose",
+                "unknown"
+              ]
+            },
+            "weights": {
+              "enum": [
+                "re_embeds",
+                "neutral",
+                "pulls_loose",
+                "unknown"
+              ]
+            },
+            "attention": {
+              "enum": [
+                "re_embeds",
+                "neutral",
+                "pulls_loose",
+                "unknown"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "data",
+            "compute",
+            "weights",
+            "attention"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "who_gains",
+        "who_pays",
+        "freedoms"
+      ]
+    },
+    "capacities": {
+      "type": "object",
+      "properties": {
+        "sustained_attention": {
+          "enum": [
+            "supports",
+            "neutral",
+            "erodes",
+            "unknown"
+          ]
+        },
+        "embodied_grounding": {
+          "enum": [
+            "supports",
+            "neutral",
+            "erodes",
+            "unknown"
+          ]
+        },
+        "cultural_inheritance": {
+          "enum": [
+            "supports",
+            "neutral",
+            "erodes",
+            "unknown"
+          ]
+        },
+        "communicative_competence": {
+          "enum": [
+            "supports",
+            "neutral",
+            "erodes",
+            "unknown"
+          ]
+        },
+        "critical_thinking": {
+          "enum": [
+            "supports",
+            "neutral",
+            "erodes",
+            "unknown"
+          ]
+        },
+        "exposure_to_traditions": {
+          "enum": [
+            "supports",
+            "neutral",
+            "erodes",
+            "unknown"
+          ]
+        },
+        "integration": {
+          "enum": [
+            "supports",
+            "neutral",
+            "erodes",
+            "unknown"
+          ]
+        },
+        "cultivation": {
+          "enum": [
+            "supports",
+            "neutral",
+            "erodes",
+            "unknown"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "infrastructure": {
+      "type": "object",
+      "properties": {
+        "cognitive": {
+          "enum": [
+            "supports",
+            "neutral",
+            "erodes",
+            "unknown"
+          ]
+        },
+        "institutional": {
+          "enum": [
+            "supports",
+            "neutral",
+            "erodes",
+            "unknown"
+          ]
+        },
+        "narrative": {
+          "enum": [
+            "supports",
+            "neutral",
+            "erodes",
+            "unknown"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "sdt": {
+      "type": "object",
+      "properties": {
+        "well_being": {
+          "enum": [
+            "improves",
+            "neutral",
+            "worsens",
+            "unknown"
+          ]
+        },
+        "elite_competition": {
+          "enum": [
+            "improves",
+            "neutral",
+            "worsens",
+            "unknown"
+          ]
+        },
+        "fiscal_health": {
+          "enum": [
+            "improves",
+            "neutral",
+            "worsens",
+            "unknown"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "ostrom": {
+      "type": "object",
+      "properties": {
+        "boundaries": {
+          "enum": [
+            "met",
+            "partial",
+            "missing",
+            "not_applicable"
+          ]
+        },
+        "congruent_rules": {
+          "enum": [
+            "met",
+            "partial",
+            "missing",
+            "not_applicable"
+          ]
+        },
+        "collective_choice": {
+          "enum": [
+            "met",
+            "partial",
+            "missing",
+            "not_applicable"
+          ]
+        },
+        "accountable_monitoring": {
+          "enum": [
+            "met",
+            "partial",
+            "missing",
+            "not_applicable"
+          ]
+        },
+        "graduated_sanctions": {
+          "enum": [
+            "met",
+            "partial",
+            "missing",
+            "not_applicable"
+          ]
+        },
+        "conflict_resolution": {
+          "enum": [
+            "met",
+            "partial",
+            "missing",
+            "not_applicable"
+          ]
+        },
+        "right_to_organise": {
+          "enum": [
+            "met",
+            "partial",
+            "missing",
+            "not_applicable"
+          ]
+        },
+        "nesting": {
+          "enum": [
+            "met",
+            "partial",
+            "missing",
+            "not_applicable"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "layers_covered": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "L1",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ]
+      }
+    },
+    "seven_moves": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 7
+      }
+    },
+    "consultation": {
+      "type": "object",
+      "properties": {
+        "affected": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "consulted": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "drafted_by": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "open_questions": {
+      "type": "object",
+      "properties": {
+        "moral_patient": {
+          "type": "string",
+          "minLength": 1
+        },
+        "net_effect": {
+          "type": "string",
+          "minLength": 1
+        },
+        "alignment_adequate": {
+          "type": "string",
+          "minLength": 1
+        },
+        "institution_adequate": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "system",
+    "decided_by",
+    "two_truths",
+    "nishkama",
+    "indras_net",
+    "political_economy"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" width="1200" height="820" font-family="Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">Independent routes as evidence</title>
+<desc id="d">Orthogonality-as-evidence: routes are recorded with their methods; routes joined by a shared upstream source collapse into one witness; the number of independent witnesses sets the ceiling on the grade.</desc>
+<defs><marker id="a-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker><marker id="a-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b42318"/></marker><marker id="a-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1a7f37"/></marker><marker id="a-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9a6700"/></marker><marker id="a-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3567c8"/></marker><marker id="a-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b86e00"/></marker><marker id="a-violet" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6639ba"/></marker></defs>
+<rect x="0" y="0" width="1200" height="820" fill="#ffffff"/>
+<text x="28.0" y="40.0" font-size="22.0" fill="#1f2328" text-anchor="start" font-weight="700">Counting agreement: independent routes as evidence (M2, CV1-CV12)</text>
+<text x="28.0" y="64.0" font-size="13.5" fill="#57606a" text-anchor="start">Agreement raises confidence in a shared shape only to the extent that the routes could not have passed doctrine to one another. Correlated routes count as one</text>
+<text x="28.0" y="81.5" font-size="13.5" fill="#57606a" text-anchor="start">witness.</text>
+<rect x="40.0" y="130.0" width="250.0" height="96.0" rx="6" fill="#eaf1fd" stroke="#3567c8" stroke-width="1.2"/>
+<text x="52.0" y="152.0" font-size="13.0" fill="#1f2328" text-anchor="start" font-weight="700">Relational physics</text>
+<text x="52.0" y="170.9" font-size="11.5" fill="#57606a" text-anchor="start">method: mathematical physics;</text>
+<text x="52.0" y="185.8" font-size="11.5" fill="#57606a" text-anchor="start">problem: measurement</text>
+<rect x="40.0" y="250.0" width="250.0" height="96.0" rx="6" fill="#eaf1fd" stroke="#3567c8" stroke-width="1.2"/>
+<text x="52.0" y="272.0" font-size="13.0" fill="#1f2328" text-anchor="start" font-weight="700">Madhyamaka</text>
+<text x="52.0" y="290.9" font-size="11.5" fill="#57606a" text-anchor="start">method: dialectical refutation;</text>
+<text x="52.0" y="305.8" font-size="11.5" fill="#57606a" text-anchor="start">problem: suffering</text>
+<rect x="40.0" y="370.0" width="250.0" height="96.0" rx="6" fill="#eaf1fd" stroke="#3567c8" stroke-width="1.2"/>
+<text x="52.0" y="392.0" font-size="13.0" fill="#1f2328" text-anchor="start" font-weight="700">Systems biology</text>
+<text x="52.0" y="410.9" font-size="11.5" fill="#57606a" text-anchor="start">method: biological modelling;</text>
+<text x="52.0" y="425.8" font-size="11.5" fill="#57606a" text-anchor="start">problem: what is alive</text>
+<rect x="40.0" y="490.0" width="250.0" height="96.0" rx="6" fill="#eaf1fd" stroke="#3567c8" stroke-width="1.2"/>
+<text x="52.0" y="512.0" font-size="13.0" fill="#1f2328" text-anchor="start" font-weight="700">Process metaphysics</text>
+<text x="52.0" y="530.9" font-size="11.5" fill="#57606a" text-anchor="start">method: speculative metaphysics;</text>
+<text x="52.0" y="545.9" font-size="11.5" fill="#57606a" text-anchor="start">problem: bifurcation of nature</text>
+<path d="M290.0,530.0 C360.0,530.0 360.0,170.0 294.0,170.0" fill="none" stroke="#b42318" stroke-width="1.8" stroke-dasharray="6 4" marker-end="url(#a-red)"/>
+<text x="368.0" y="320.0" font-size="12.0" fill="#b42318" text-anchor="start" font-weight="700">upstream link: the</text>
+<text x="368.0" y="335.6" font-size="12.0" fill="#b42318" text-anchor="start" font-weight="700">process philosopher had</text>
+<text x="368.0" y="351.2" font-size="12.0" fill="#b42318" text-anchor="start" font-weight="700">read the physicists</text>
+<text x="560.0" y="140.0" font-size="15.0" fill="#1f2328" text-anchor="start" font-weight="700">Clusters after the links</text>
+<rect x="560.0" y="156.0" width="280.0" height="70.0" rx="6" fill="#fff8e1" stroke="#9a6700" stroke-width="1.2"/>
+<text x="574.0" y="180.0" font-size="12.5" fill="#1f2328" text-anchor="start">Relational physics + process</text>
+<text x="574.0" y="196.2" font-size="12.5" fill="#1f2328" text-anchor="start">metaphysics: one witness</text>
+<rect x="560.0" y="238.0" width="280.0" height="46.0" rx="6" fill="#e8f5ec" stroke="#1a7f37" stroke-width="1.2"/>
+<text x="574.0" y="266.0" font-size="12.5" fill="#1f2328" text-anchor="start">Madhyamaka: one witness</text>
+<rect x="560.0" y="296.0" width="280.0" height="46.0" rx="6" fill="#e8f5ec" stroke="#1a7f37" stroke-width="1.2"/>
+<text x="574.0" y="324.0" font-size="12.5" fill="#1f2328" text-anchor="start">Systems biology: one witness</text>
+<text x="560.0" y="372.0" font-size="16.0" fill="#1a7f37" text-anchor="start" font-weight="700">= 3 independent routes</text>
+<line x1="470.0" y1="300.0" x2="554.0" y2="260.0" stroke="#57606a" stroke-width="1.4" marker-end="url(#a-muted)"/>
+<text x="900.0" y="140.0" font-size="15.0" fill="#1f2328" text-anchor="start" font-weight="700">Grade ceiling</text>
+<rect x="900.0" y="156.0" width="260.0" height="48.0" rx="6" fill="#e8f5ec" stroke="#1a7f37" stroke-width="1.2"/>
+<text x="914.0" y="176.0" font-size="12.0" fill="#57606a" text-anchor="start">3 or more</text>
+<text x="914.0" y="194.0" font-size="14.0" fill="#1a7f37" text-anchor="start" font-weight="700">strong</text>
+<rect x="900.0" y="214.0" width="260.0" height="48.0" rx="6" fill="#fff8e1" stroke="#9a6700" stroke-width="1.2"/>
+<text x="914.0" y="234.0" font-size="12.0" fill="#57606a" text-anchor="start">2</text>
+<text x="914.0" y="252.0" font-size="14.0" fill="#9a6700" text-anchor="start" font-weight="700">partial</text>
+<rect x="900.0" y="272.0" width="260.0" height="48.0" rx="6" fill="#fdecea" stroke="#b42318" stroke-width="1.2"/>
+<text x="914.0" y="292.0" font-size="12.0" fill="#57606a" text-anchor="start">1</text>
+<text x="914.0" y="310.0" font-size="14.0" fill="#b42318" text-anchor="start" font-weight="700">withdrawn</text>
+<rect x="900.0" y="330.0" width="260.0" height="48.0" rx="6" fill="#f3eefc" stroke="#6639ba" stroke-width="1.2"/>
+<text x="914.0" y="350.0" font-size="12.0" fill="#57606a" text-anchor="start">a selection</text>
+<text x="914.0" y="368.0" font-size="14.0" fill="#6639ba" text-anchor="start" font-weight="700">author's thesis</text>
+<rect x="40.0" y="610.0" width="1120.0" height="196.0" rx="6" fill="#f6f8fa" stroke="#8c959f" stroke-width="1.2"/>
+<text x="56.0" y="636.0" font-size="14.0" fill="#1f2328" text-anchor="start" font-weight="700">What counts as a shared upstream source</text>
+<text x="56.0" y="664.0" font-size="12.5" fill="#1f2328" text-anchor="start">- a shared translation vocabulary</text>
+<text x="596.0" y="664.0" font-size="12.5" fill="#1f2328" text-anchor="start">- a shared lineage or scripture</text>
+<text x="56.0" y="688.0" font-size="12.5" fill="#1f2328" text-anchor="start">- a comparative project that shaped both</text>
+<text x="596.0" y="688.0" font-size="12.5" fill="#1f2328" text-anchor="start">- active dialogue between the routes</text>
+<text x="56.0" y="712.0" font-size="12.5" fill="#1f2328" text-anchor="start">- a shared forum or debate</text>
+<text x="596.0" y="712.0" font-size="12.5" fill="#1f2328" text-anchor="start">- the synthesist's own frame</text>
+<text x="56.0" y="736.0" font-size="12.5" fill="#1f2328" text-anchor="start">- direct influence</text>
+<text x="596.0" y="736.0" font-size="12.5" fill="#1f2328" text-anchor="start">- a citation artefact (dropped, not counted)</text>
+<text x="56.0" y="768.0" font-size="12.0" fill="#57606a" text-anchor="start">Routes that share a method, a validation procedure or a cosmology are also counted as one. The computed grade is a ceiling; a declared grade above it is a finding (CON-001).</text>
+</svg>

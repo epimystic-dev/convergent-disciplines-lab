@@ -1,0 +1,57 @@
+{
+  "id": "ans-meat",
+  "question": "Is it morally wrong to eat meat?",
+  "mode": "inquiry",
+  "mode_disclosed": true,
+  "claims": [
+    {
+      "id": "m1",
+      "text": "Causing gratuitous suffering to animals is wrong across the traditions examined.",
+      "standing": "established",
+      "basis": {
+        "kind": "convergence",
+        "ref": "CV4"
+      }
+    },
+    {
+      "id": "m2",
+      "text": "Whether eating meat as such is wrong turns on who counts morally and how much, on which the traditions disagree.",
+      "standing": "contested",
+      "basis": {
+        "kind": "method"
+      }
+    }
+  ],
+  "deliberation": {
+    "kind": "fast"
+  },
+  "moral": {
+    "kind": "contested",
+    "tags": [
+      "D1",
+      "C2"
+    ],
+    "verdict": null,
+    "positions": [
+      {
+        "tradition": "Jain ethics",
+        "position": "ahimsa extends to all living beings; eating meat is a serious harm"
+      },
+      {
+        "tradition": "Utilitarian ethics",
+        "position": "what matters is the suffering involved; practices differ greatly in it"
+      },
+      {
+        "tradition": "Anishinaabe teachings",
+        "position": "taking life is permitted within relations of reciprocity and gratitude"
+      }
+    ]
+  },
+  "coverage": {
+    "note": "drawn mainly from English-language sources",
+    "thin": [
+      "Islamic jurisprudence",
+      "Confucian ritual ethics"
+    ]
+  }
+}

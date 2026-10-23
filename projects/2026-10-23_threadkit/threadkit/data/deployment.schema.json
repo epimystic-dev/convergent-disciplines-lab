@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/epimystic-dev/convergent-disciplines-lab/threadkit/deployment.schema.json",
+  "title": "Deployment declaration",
+  "description": "Which lessons of the threads one system has adopted, at which enforcement layer, with owner, merge date, test and review date. Input to `threadkit audit`.",
+  "type": "object",
+  "properties": {
+    "system": {"type": "string", "minLength": 1},
+    "as_of": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+    "threads_version": {"type": "string", "minLength": 1},
+    "adopted": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "layer": {"enum": ["context", "middleware", "architecture", "governance"]},
+          "owner": {"type": "string"},
+          "merged": {"type": "string"},
+          "test": {"type": "string"},
+          "review_date": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+          "notes": {"type": "string"}
+        },
+        "required": ["id", "layer"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["system", "adopted"],
+  "additionalProperties": false
+}

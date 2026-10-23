@@ -1,0 +1,24 @@
+{
+  "id": "exp-timeout",
+  "conclusion": "The deployment failed because the new config pushed start-up past the health-check timeout.",
+  "details": [
+    {
+      "detail": "start-up time rose after the config change",
+      "constrained_by": "start-up logs before and after"
+    },
+    {
+      "detail": "the health check kills slow starters",
+      "constrained_by": "the orchestrator's documented behaviour"
+    }
+  ],
+  "counterfactuals": [
+    {
+      "if": "the timeout is raised",
+      "then": "the deployment succeeds"
+    },
+    {
+      "if": "the old config is restored",
+      "then": "start-up returns under the timeout"
+    }
+  ]
+}

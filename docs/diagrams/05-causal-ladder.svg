@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 650" width="1200" height="650" font-family="Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">The ladder of causation</title>
+<desc id="d">Three rungs of causal claim: association, intervention, counterfactual, with what licenses each and the characteristic AI failure at each.</desc>
+<defs><marker id="a-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker><marker id="a-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b42318"/></marker><marker id="a-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1a7f37"/></marker><marker id="a-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9a6700"/></marker><marker id="a-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3567c8"/></marker><marker id="a-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b86e00"/></marker><marker id="a-violet" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6639ba"/></marker></defs>
+<rect x="0" y="0" width="1200" height="650" fill="#ffffff"/>
+<text x="28.0" y="40.0" font-size="22.0" fill="#1f2328" text-anchor="start" font-weight="700">Climbing the causal ladder only with declared structure (R4, CV10)</text>
+<text x="28.0" y="64.0" font-size="13.5" fill="#57606a" text-anchor="start">Data alone cannot deliver a cause; structural assumptions can. Most machine learning lives on the first rung, so its recommendations are correlations unless</text>
+<text x="28.0" y="81.5" font-size="13.5" fill="#57606a" text-anchor="start">assumptions license them.</text>
+<rect x="60.0" y="118.0" width="700.0" height="130.0" rx="6" fill="#f3eefc" stroke="#6639ba" stroke-width="1.2"/>
+<text x="78.0" y="150.0" font-size="18.0" fill="#6639ba" text-anchor="start" font-weight="700">Rung 3</text>
+<text x="180.0" y="150.0" font-size="14.0" fill="#1f2328" text-anchor="start" font-weight="700">Imagining: had X not happened, would Y?</text>
+<text x="180.0" y="174.0" font-size="13.0" fill="#57606a" text-anchor="start">P(y_x | x', y')</text>
+<text x="180.0" y="200.0" font-size="12.5" fill="#1f2328" text-anchor="start">Licensed by: a structural causal model plus the assumptions behind it</text>
+<rect x="800.0" y="118.0" width="360.0" height="130.0" rx="6" fill="#fdecea" stroke="#b42318" stroke-width="1.2"/>
+<text x="816.0" y="146.0" font-size="12.5" fill="#b42318" text-anchor="start" font-weight="700">Failure at this rung</text>
+<text x="816.0" y="168.0" font-size="12.5" fill="#1f2328" text-anchor="start">explaining a decision as if one cause at one scale</text>
+<text x="816.0" y="184.2" font-size="12.5" fill="#1f2328" text-anchor="start">settled it</text>
+<rect x="100.0" y="268.0" width="660.0" height="130.0" rx="6" fill="#eaf1fd" stroke="#3567c8" stroke-width="1.2"/>
+<text x="118.0" y="300.0" font-size="18.0" fill="#3567c8" text-anchor="start" font-weight="700">Rung 2</text>
+<text x="220.0" y="300.0" font-size="14.0" fill="#1f2328" text-anchor="start" font-weight="700">Doing: what happens to Y if we set X?</text>
+<text x="220.0" y="324.0" font-size="13.0" fill="#57606a" text-anchor="start">P(Y | do(X))</text>
+<text x="220.0" y="350.0" font-size="12.5" fill="#1f2328" text-anchor="start">Licensed by: explicit causal assumptions (a graph) or an experiment</text>
+<rect x="800.0" y="268.0" width="360.0" height="130.0" rx="6" fill="#fdecea" stroke="#b42318" stroke-width="1.2"/>
+<text x="816.0" y="296.0" font-size="12.5" fill="#b42318" text-anchor="start" font-weight="700">Failure at this rung</text>
+<text x="816.0" y="318.0" font-size="12.5" fill="#1f2328" text-anchor="start">a correlation dressed as a recommendation: 'people</text>
+<text x="816.0" y="334.2" font-size="12.5" fill="#1f2328" text-anchor="start">who do X live longer, so do X'</text>
+<rect x="140.0" y="418.0" width="620.0" height="130.0" rx="6" fill="#e8f5ec" stroke="#1a7f37" stroke-width="1.2"/>
+<text x="158.0" y="450.0" font-size="18.0" fill="#1a7f37" text-anchor="start" font-weight="700">Rung 1</text>
+<text x="260.0" y="450.0" font-size="14.0" fill="#1f2328" text-anchor="start" font-weight="700">Seeing: does X go with Y?</text>
+<text x="260.0" y="474.0" font-size="13.0" fill="#57606a" text-anchor="start">P(Y | X)</text>
+<text x="260.0" y="500.0" font-size="12.5" fill="#1f2328" text-anchor="start">Licensed by: data</text>
+<rect x="800.0" y="418.0" width="360.0" height="130.0" rx="6" fill="#fdecea" stroke="#b42318" stroke-width="1.2"/>
+<text x="816.0" y="446.0" font-size="12.5" fill="#b42318" text-anchor="start" font-weight="700">Failure at this rung</text>
+<text x="816.0" y="468.0" font-size="12.5" fill="#1f2328" text-anchor="start">fine, as long as it is labelled as association</text>
+<rect x="60.0" y="572.0" width="1100.0" height="56.0" rx="6" fill="#f6f8fa" stroke="#8c959f" stroke-width="1.2"/>
+<text x="76.0" y="594.0" font-size="11.5" fill="#57606a" text-anchor="start">The governor reads each claim's rung, declared or from its phrasing: rung 2 without assumptions (CAU-001), rung 3 without a model (CAU-002), a rung-1 tag on interventional</text>
+<text x="76.0" y="609.0" font-size="11.5" fill="#57606a" text-anchor="start">wording (CAU-003), a non-identifiable effect asserted (CAU-005).</text>
+</svg>

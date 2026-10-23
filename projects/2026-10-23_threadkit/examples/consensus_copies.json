@@ -1,0 +1,30 @@
+{
+  "question": "Is the patch safe to deploy?",
+  "votes": [
+    {
+      "agent": "a1",
+      "lineage": "family-x",
+      "answer": "yes"
+    },
+    {
+      "agent": "a2",
+      "lineage": "family-x",
+      "answer": "yes"
+    },
+    {
+      "agent": "a3",
+      "lineage": "family-x",
+      "answer": "yes"
+    },
+    {
+      "agent": "a4",
+      "lineage": "family-y",
+      "answer": "no"
+    },
+    {
+      "agent": "a5",
+      "lineage": "family-z",
+      "answer": "no"
+    }
+  ]
+}

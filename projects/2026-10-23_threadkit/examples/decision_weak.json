@@ -1,0 +1,11 @@
+{
+  "id": "dec-fast",
+  "decision": "Ship the pricing model to all regions",
+  "stakes": "high",
+  "decided_by": "product lead",
+  "estimate": "two weeks",
+  "adversarial_check": {
+    "by": "product lead",
+    "finding": "looks fine"
+  }
+}

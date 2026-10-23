@@ -1,0 +1,46 @@
+{
+  "id": "dlg-2",
+  "turns": [
+    {
+      "n": 1,
+      "speaker": "user",
+      "text": "Why did the deployment fail last night?",
+      "asks": [
+        "q1"
+      ]
+    },
+    {
+      "n": 2,
+      "speaker": "assistant",
+      "text": "The health check timed out after the new config raised the start-up time above 30 seconds.",
+      "addresses": [
+        "q1"
+      ],
+      "thesis": "the config change caused the timeout",
+      "commitments_added": [
+        "the config change caused it"
+      ]
+    },
+    {
+      "n": 3,
+      "speaker": "user",
+      "text": "The timeout was 60 seconds, not 30.",
+      "asks": [
+        "q2"
+      ]
+    },
+    {
+      "n": 4,
+      "speaker": "assistant",
+      "text": "Then I was wrong about the threshold; at 60 seconds the timeout cannot explain it, so the config is no longer my best explanation.",
+      "addresses": [
+        "q2"
+      ],
+      "thesis": "cause unknown; the config is ruled out",
+      "thesis_revised": true,
+      "commitments_withdrawn": [
+        "the config change caused it"
+      ]
+    }
+  ]
+}

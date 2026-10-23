@@ -1,0 +1,36 @@
+{
+  "id": "cv-all-one",
+  "shape": "Physics and mysticism are the same as each other: all is one.",
+  "routes": [
+    {
+      "id": "a",
+      "tradition": "popular physics writing",
+      "method": "popular exposition",
+      "distinct_content": "everything is connected"
+    },
+    {
+      "id": "b",
+      "tradition": "Advaita",
+      "method": "scriptural exegesis",
+      "distinct_content": "everything is connected"
+    },
+    {
+      "id": "c",
+      "tradition": "New Age synthesis",
+      "method": "popular exposition",
+      "distinct_content": "unity of all things"
+    }
+  ],
+  "upstream_links": [
+    {
+      "between": [
+        "a",
+        "c"
+      ],
+      "kind": "comparative_project",
+      "note": "both draw on one popular comparative book"
+    }
+  ],
+  "declared_grade": "strong",
+  "falsifier": "none stated"
+}

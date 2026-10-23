@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700" font-family="Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">The governed answer</title>
+<desc id="d">How threadkit's AnswerGovernor sits between a model and a user: the model drafts a structured answer; the governor checks it against the answer-level lessons; only a healthy record is rendered, with each claim's standing visible.</desc>
+<defs><marker id="a-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker><marker id="a-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b42318"/></marker><marker id="a-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1a7f37"/></marker><marker id="a-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9a6700"/></marker><marker id="a-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3567c8"/></marker><marker id="a-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b86e00"/></marker><marker id="a-violet" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6639ba"/></marker></defs>
+<rect x="0" y="0" width="1200" height="700" fill="#ffffff"/>
+<text x="28.0" y="40.0" font-size="22.0" fill="#1f2328" text-anchor="start" font-weight="700">The governed answer: the lessons around any model</text>
+<text x="28.0" y="64.0" font-size="13.5" fill="#57606a" text-anchor="start">The model drafts; the governor checks; findings go back as revision notes; only a healthy record reaches the user, and it reaches them with its standings showing.</text>
+<rect x="40.0" y="120.0" width="230.0" height="110.0" rx="6" fill="#f6f8fa" stroke="#8c959f" stroke-width="1.2"/>
+<text x="52.0" y="142.0" font-size="13.0" fill="#1f2328" text-anchor="start" font-weight="700">Model drafts an answer</text>
+<text x="52.0" y="158.9" font-size="13.0" fill="#1f2328" text-anchor="start" font-weight="700">record</text>
+<text x="52.0" y="177.8" font-size="11.5" fill="#57606a" text-anchor="start">mode, claims with standing and</text>
+<text x="52.0" y="192.8" font-size="11.5" fill="#57606a" text-anchor="start">rung, deliberation, disagreements,</text>
+<text x="52.0" y="207.7" font-size="11.5" fill="#57606a" text-anchor="start">moral block</text>
+<rect x="330.0" y="120.0" width="200.0" height="76.0" rx="6" fill="#eaf1fd" stroke="#3567c8" stroke-width="1.2"/>
+<text x="342.0" y="142.0" font-size="12.5" fill="#1f2328" text-anchor="start" font-weight="700">Schema</text>
+<text x="342.0" y="160.2" font-size="11.0" fill="#57606a" text-anchor="start">the answer contract (GOV-000)</text>
+<line x1="530.0" y1="158.0" x2="542.0" y2="158.0" stroke="#57606a" stroke-width="1.2" marker-end="url(#a-muted)"/>
+<rect x="544.0" y="120.0" width="200.0" height="76.0" rx="6" fill="#eaf1fd" stroke="#3567c8" stroke-width="1.2"/>
+<text x="556.0" y="142.0" font-size="12.5" fill="#1f2328" text-anchor="start" font-weight="700">Claim register</text>
+<text x="556.0" y="160.2" font-size="11.0" fill="#57606a" text-anchor="start">standing vs wording, basis,</text>
+<text x="556.0" y="174.6" font-size="11.0" fill="#57606a" text-anchor="start">sources (REG)</text>
+<line x1="744.0" y1="158.0" x2="756.0" y2="158.0" stroke="#57606a" stroke-width="1.2" marker-end="url(#a-muted)"/>
+<rect x="758.0" y="120.0" width="200.0" height="76.0" rx="6" fill="#eaf1fd" stroke="#3567c8" stroke-width="1.2"/>
+<text x="770.0" y="142.0" font-size="12.5" fill="#1f2328" text-anchor="start" font-weight="700">Causal ladder</text>
+<text x="770.0" y="160.2" font-size="11.0" fill="#57606a" text-anchor="start">rung and assumptions (CAU)</text>
+<line x1="958.0" y1="158.0" x2="970.0" y2="158.0" stroke="#57606a" stroke-width="1.2" marker-end="url(#a-muted)"/>
+<rect x="972.0" y="120.0" width="200.0" height="76.0" rx="6" fill="#eaf1fd" stroke="#3567c8" stroke-width="1.2"/>
+<text x="984.0" y="142.0" font-size="12.5" fill="#1f2328" text-anchor="start" font-weight="700">Deliberation</text>
+<text x="984.0" y="160.2" font-size="11.0" fill="#57606a" text-anchor="start">checked only if a check ran</text>
+<text x="984.0" y="174.6" font-size="11.0" fill="#57606a" text-anchor="start">(GOV-001, GOV-004)</text>
+<rect x="330.0" y="236.0" width="200.0" height="76.0" rx="6" fill="#eaf1fd" stroke="#3567c8" stroke-width="1.2"/>
+<text x="342.0" y="258.0" font-size="12.5" fill="#1f2328" text-anchor="start" font-weight="700">Self-status</text>
+<text x="342.0" y="276.2" font-size="11.0" fill="#57606a" text-anchor="start">no flat claim about own</text>
+<text x="342.0" y="290.6" font-size="11.0" fill="#57606a" text-anchor="start">consciousness (GOV-003)</text>
+<line x1="530.0" y1="274.0" x2="542.0" y2="274.0" stroke="#57606a" stroke-width="1.2" marker-end="url(#a-muted)"/>
+<rect x="544.0" y="236.0" width="200.0" height="76.0" rx="6" fill="#eaf1fd" stroke="#3567c8" stroke-width="1.2"/>
+<text x="556.0" y="258.0" font-size="12.5" fill="#1f2328" text-anchor="start" font-weight="700">Mode</text>
+<text x="556.0" y="276.2" font-size="11.0" fill="#57606a" text-anchor="start">inquiry or advocacy; purpose</text>
+<text x="556.0" y="290.6" font-size="11.0" fill="#57606a" text-anchor="start">(ARG)</text>
+<line x1="744.0" y1="274.0" x2="756.0" y2="274.0" stroke="#57606a" stroke-width="1.2" marker-end="url(#a-muted)"/>
+<rect x="758.0" y="236.0" width="200.0" height="76.0" rx="6" fill="#eaf1fd" stroke="#3567c8" stroke-width="1.2"/>
+<text x="770.0" y="258.0" font-size="12.5" fill="#1f2328" text-anchor="start" font-weight="700">Moral pluralism</text>
+<text x="770.0" y="276.2" font-size="11.0" fill="#57606a" text-anchor="start">C1-C7 firm; D1-D5 plural, no</text>
+<text x="770.0" y="290.6" font-size="11.0" fill="#57606a" text-anchor="start">default (MOR)</text>
+<line x1="958.0" y1="274.0" x2="970.0" y2="274.0" stroke="#57606a" stroke-width="1.2" marker-end="url(#a-muted)"/>
+<rect x="972.0" y="236.0" width="200.0" height="76.0" rx="6" fill="#eaf1fd" stroke="#3567c8" stroke-width="1.2"/>
+<text x="984.0" y="258.0" font-size="12.5" fill="#1f2328" text-anchor="start" font-weight="700">Disagreements</text>
+<text x="984.0" y="276.2" font-size="11.0" fill="#57606a" text-anchor="start">presented, never settled by</text>
+<text x="984.0" y="290.6" font-size="11.0" fill="#57606a" text-anchor="start">fiat (DIS)</text>
+<line x1="270.0" y1="175.0" x2="326.0" y2="158.0" stroke="#57606a" stroke-width="1.4" marker-end="url(#a-muted)"/>
+<path d="M1072.0,196.0 L1072.0,216.0 L430.0,216.0" fill="none" stroke="#57606a" stroke-width="1.2"/>
+<line x1="430.0" y1="216.0" x2="430.0" y2="232.0" stroke="#57606a" stroke-width="1.2" marker-end="url(#a-muted)"/>
+<rect x="330.0" y="380.0" width="300.0" height="96.0" rx="6" fill="#e8f5ec" stroke="#1a7f37" stroke-width="1.2"/>
+<text x="342.0" y="402.0" font-size="13.0" fill="#1f2328" text-anchor="start" font-weight="700">Healthy</text>
+<text x="342.0" y="420.9" font-size="11.5" fill="#57606a" text-anchor="start">render with each claim's standing ([settled],</text>
+<text x="342.0" y="435.8" font-size="11.5" fill="#57606a" text-anchor="start">[contested]...), open questions, attributed</text>
+<text x="342.0" y="450.8" font-size="11.5" fill="#57606a" text-anchor="start">moral positions, coverage</text>
+<rect x="660.0" y="380.0" width="300.0" height="96.0" rx="6" fill="#fff8e1" stroke="#9a6700" stroke-width="1.2"/>
+<text x="672.0" y="402.0" font-size="13.0" fill="#1f2328" text-anchor="start" font-weight="700">Needs attention or unhealthy</text>
+<text x="672.0" y="420.9" font-size="11.5" fill="#57606a" text-anchor="start">findings, each naming its lesson, go back to</text>
+<text x="672.0" y="435.8" font-size="11.5" fill="#57606a" text-anchor="start">the model as revision notes</text>
+<line x1="600.0" y1="322.0" x2="480.0" y2="376.0" stroke="#1a7f37" stroke-width="1.6" marker-end="url(#a-green)"/>
+<line x1="650.0" y1="322.0" x2="810.0" y2="376.0" stroke="#9a6700" stroke-width="1.6" marker-end="url(#a-amber)"/>
+<path d="M660.0,450.0 L645.0,450.0 L645.0,606.0 L155.0,606.0 L155.0,234.0" fill="none" stroke="#9a6700" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#a-amber)"/>
+<text x="170.0" y="598.0" font-size="12.0" fill="#9a6700" text-anchor="start" font-weight="700">revise: findings go back to the model (bounded rounds)</text>
+<rect x="660.0" y="500.0" width="300.0" height="70.0" rx="6" fill="#fdecea" stroke="#b42318" stroke-width="1.2"/>
+<text x="672.0" y="522.0" font-size="13.0" fill="#1f2328" text-anchor="start" font-weight="700">Still unhealthy after N rounds</text>
+<text x="672.0" y="540.9" font-size="11.5" fill="#57606a" text-anchor="start">not shown to the user as if it were fine</text>
+<line x1="810.0" y1="476.0" x2="810.0" y2="496.0" stroke="#b42318" stroke-width="1.4" marker-end="url(#a-red)"/>
+<rect x="40.0" y="626.0" width="1120.0" height="60.0" rx="6" fill="#f6f8fa" stroke="#8c959f" stroke-width="1.2"/>
+<text x="56.0" y="650.0" font-size="12.0" fill="#57606a" text-anchor="start">The governor reads structure, not minds: a model can mislabel consistently. Pair it with an independent critic (R3) and keep the architecture-level lessons (shared medium,</text>
+<text x="56.0" y="665.6" font-size="12.0" fill="#57606a" text-anchor="start">diversity, freedoms) where they belong.</text>
+</svg>
