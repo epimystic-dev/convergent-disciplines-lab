@@ -25,6 +25,12 @@
     },
     "log_violations": {
       "type": "boolean"
+    },
+    "generosity": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Probability of cooperating when the policy would otherwise retaliate (a small value softens the tit-for-tat echo of a single defection; too large invites exploitation)."
     }
   },
   "required": [

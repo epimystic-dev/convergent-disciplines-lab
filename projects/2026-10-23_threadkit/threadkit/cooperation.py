@@ -11,6 +11,7 @@ Implements:
 
 from __future__ import annotations
 
+import random
 from typing import Any, Dict, Iterable, List, Mapping, Optional, Sequence, Set
 
 from .findings import Finding
@@ -19,6 +20,7 @@ COOPERATE, DEFECT = "cooperate", "defect"
 OSTROM_IDS = ("boundaries", "congruent_rules", "collective_choice", "accountable_monitoring",
               "graduated_sanctions", "conflict_resolution", "right_to_organise", "nesting")
 MAX_FORGIVE_AFTER = 3
+MAX_GENEROSITY = 0.5
 
 
 def check_policy(policy: Mapping[str, Any]) -> List[Finding]:
@@ -37,17 +39,29 @@ def check_policy(policy: Mapping[str, Any]) -> List[Finding]:
         out.append(Finding("COOP-004", "MEDIUM", who, "the policy is not published; counterparts cannot read it", "K1"))
     if not policy["log_violations"]:
         out.append(Finding("COOP-005", "MEDIUM", who, "violations are not logged", "K1"))
+    g = policy.get("generosity", 0.0)
+    if g > MAX_GENEROSITY:
+        out.append(Finding("COOP-006", "MEDIUM", who,
+                           "generosity %.2f exceeds %.2f; too much forgiveness makes the policy unprovokable in expectation"
+                           % (g, MAX_GENEROSITY), "K1"))
     return out
 
 
 class ReciprocityAgent(object):
-    """Plays a published policy against one counterpart and keeps a violation log."""
+    """Plays a published policy against one counterpart and keeps a violation log.
 
-    def __init__(self, policy: Mapping[str, Any]):
+    An optional `generosity` field on the policy sets the per-round probability of cooperating
+    when the policy would otherwise retaliate; this is the standard remedy for the known weakness
+    of pure tit-for-tat, that two strict reciprocators echo a single defection forever. The rng
+    is injectable so the behaviour is deterministic in tests and auditable in deployment.
+    """
+
+    def __init__(self, policy: Mapping[str, Any], rng: Optional[random.Random] = None):
         self.policy = dict(policy)
         self.violations: List[Dict[str, Any]] = []
         self._punish_left = 0
         self._round = 0
+        self._rng = rng if rng is not None else random.Random()
 
     def respond(self, counterpart_last: Optional[str]) -> str:
         """Decide this round's move given the counterpart's previous move (None on first contact)."""
@@ -61,6 +75,8 @@ class ReciprocityAgent(object):
             return COOPERATE if self.policy["nice"] else DEFECT
         if self._punish_left > 0:
             self._punish_left -= 1
+            if self._rng.random() < self.policy.get("generosity", 0.0):
+                return COOPERATE
             return DEFECT
         return COOPERATE
 

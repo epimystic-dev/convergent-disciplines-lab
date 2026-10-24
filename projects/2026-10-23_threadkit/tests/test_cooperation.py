@@ -2,11 +2,12 @@
 
 from __future__ import annotations
 
+import random
 import unittest
 
 from threadkit.consensus import tally
-from threadkit.cooperation import (COOPERATE, DEFECT, LineageReputation, ReciprocityAgent, check_policy, ostrom_audit,
-                                   play)
+from threadkit.cooperation import (COOPERATE, DEFECT, MAX_GENEROSITY, LineageReputation, ReciprocityAgent,
+                                   check_policy, ostrom_audit, play)
 from threadkit.debias import check as check_decision, natural_frequency
 from threadkit.spec import contract_validator
 from tests.support import codes, deepcopy, load_example
@@ -95,6 +96,54 @@ class Policy(unittest.TestCase):
         a = ReciprocityAgent(dict(POLICY, provokable=False))
         a.respond(None)
         self.assertEqual(a.respond(DEFECT), COOPERATE)
+
+    def test_generosity_breaks_echo(self):
+        """Two generous reciprocators (generosity=1.0) do not echo a single defection."""
+        p = dict(POLICY, generosity=0.5)
+        a = ReciprocityAgent(dict(p, generosity=1.0))
+        b = ReciprocityAgent(dict(p, generosity=1.0))
+        moves = play(a, b, 6, b_override={2: DEFECT})
+        self.assertEqual([m[0] for m in moves[3:]], [COOPERATE] * 3)
+        self.assertEqual([m[1] for m in moves[3:]], [COOPERATE] * 3)
+        self.assertEqual(a.violations, [{"round": 2, "move": DEFECT}])
+
+    def test_generosity_zero_is_strict(self):
+        """generosity=0.0 is identical to the strict tit-for-tat policy."""
+        strict = ReciprocityAgent(POLICY)
+        gen_zero = ReciprocityAgent(dict(POLICY, generosity=0.0), rng=random.Random(1))
+        for last in (None, DEFECT, COOPERATE, DEFECT, COOPERATE, COOPERATE):
+            self.assertEqual(strict.respond(last), gen_zero.respond(last))
+
+    def test_generosity_default_absent(self):
+        """A policy without a `generosity` key behaves identically to generosity=0.0."""
+        a = ReciprocityAgent(POLICY, rng=random.Random(0))
+        b = ReciprocityAgent(POLICY, rng=random.Random(0))
+        moves = play(a, b, 6, b_override={2: DEFECT})
+        self.assertIn(DEFECT, [m[0] for m in moves[3:]])
+
+    def test_generosity_is_deterministic_under_seed(self):
+        """The injected rng makes generous play reproducible for audit."""
+        p = dict(POLICY, generosity=0.5)
+        first = play(ReciprocityAgent(p, rng=random.Random(42)),
+                     ReciprocityAgent(p, rng=random.Random(42)),
+                     8, b_override={2: DEFECT, 5: DEFECT})
+        second = play(ReciprocityAgent(p, rng=random.Random(42)),
+                      ReciprocityAgent(p, rng=random.Random(42)),
+                      8, b_override={2: DEFECT, 5: DEFECT})
+        self.assertEqual(first, second)
+
+    def test_generosity_cap(self):
+        """Generosity above MAX_GENEROSITY is flagged (unprovokable in expectation)."""
+        p = dict(POLICY, generosity=MAX_GENEROSITY + 0.1)
+        self.assertIn("COOP-006", codes(check_policy(p)))
+        p_ok = dict(POLICY, generosity=MAX_GENEROSITY)
+        self.assertNotIn("COOP-006", codes(check_policy(p_ok)))
+
+    def test_generosity_passes_schema(self):
+        from threadkit.spec import contract_validator
+        v = contract_validator("agent-policy")
+        self.assertEqual(v.errors(dict(POLICY, generosity=0.1)), [])
+        self.assertNotEqual(v.errors(dict(POLICY, generosity=1.5)), [])
 
 
 class Reputation(unittest.TestCase):
