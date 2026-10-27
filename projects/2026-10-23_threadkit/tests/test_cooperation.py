@@ -145,6 +145,23 @@ class Policy(unittest.TestCase):
         self.assertEqual(v.errors(dict(POLICY, generosity=0.1)), [])
         self.assertNotEqual(v.errors(dict(POLICY, generosity=1.5)), [])
 
+    def test_generosity_contract_round_trip(self):
+        """Each allowed `generosity` tier (0.0, 0.25, 0.5) passes both check_policy and the schema.
+
+        The three values are the policy tiers the design actually uses: 0.0 (strict tit-for-tat),
+        0.25 (a small softening), and MAX_GENEROSITY=0.5 (the published ceiling). This contract test
+        pins both audit paths - the Finding generator and the published JSON Schema - to the full
+        allowed range in one place, so a future change to either side that drifts them apart fails
+        here before it reaches a deployment.
+        """
+        v = contract_validator("agent-policy")
+        tiers = (0.0, 0.25, MAX_GENEROSITY)
+        self.assertEqual(tiers[-1], 0.5, "the cap is the top of the allowed tier set")
+        for g in tiers:
+            p = dict(POLICY, generosity=g)
+            self.assertEqual(check_policy(p), [], "check_policy flagged generosity=%r" % g)
+            self.assertEqual(v.errors(p), [], "schema rejected generosity=%r" % g)
+
 
 class Reputation(unittest.TestCase):
     """K2."""
