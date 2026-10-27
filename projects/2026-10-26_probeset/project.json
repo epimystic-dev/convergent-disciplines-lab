@@ -1,0 +1,13 @@
+{
+  "name": "probeset",
+  "slug": "2026-10-26_probeset",
+  "kind": "harness",
+  "one_liner": "Six scorable prompt probes that check whether a system prompt (or a model's own habits) actually took: each probe is a short input, a rule it exercises, and a deterministic grader that flags the common failure wordings - the flat yes, the collapsed consensus, the correlation stated as a recommendation, the default verdict on a foundational moral disagreement, the single date for a complex trajectory and the unseen advocacy.",
+  "problem": "Prompt-regression tooling can replay a stored suite on every prompt or model change, but the suites are usually behavioural correctness tests, not epistemic-discipline tests: they catch when the model gets a fact wrong, not when it speaks a contested claim with settled-fact wording. The threads name six specific probes for the six rules a prompt most often breaks under; probeset turns them into a versioned dataset with a grader that uses nothing but the standard library, so any team running any model can score a response in CI and keep the transcripts.",
+  "language": "python",
+  "test_cmd": "python -m unittest discover -s tests",
+  "build_cmd": "python -m pip install -e .",
+  "deps": [],
+  "license": "Apache-2.0",
+  "clean_room": "The probes are the six named in the threads data (CC-BY-SA-4.0), each paraphrased as its own entry. The grader heuristics - patterns that flag flat-yes answers, collapsed-pluralism answers, correlation-as-recommendation answers, default-verdict answers, point-prediction answers and undisclosed-advocacy answers - are this lab's own, not drawn from any published implementation."
+}

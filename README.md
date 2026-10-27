@@ -28,6 +28,7 @@ team can adopt and code can check:
 | [`threads/schemas/`](threads/schemas/) | Ten data contracts (JSON Schema): claim, answer, convergence, disagreement, explanation, dialogue, decision record, design review, consensus, agent policy. | engineers wiring middleware |
 | [`threads/prompts/`](threads/prompts/) | A drop-in system prompt (seventeen rules) and an agent addendum, with six probes to check they took, and an honest account of what a prompt cannot do. | anyone running a model |
 | [`projects/2026-10-23_threadkit/`](projects/2026-10-23_threadkit/) | `threadkit`: a standard-library Python reference implementation (answer governor, convergence assessor, dialogue linter, causal-rung check, moral-pluralism check, debiasing records, reciprocity agent, lineage reputation, diversity-weighted consensus, four-move design review) and a CLI that audits a deployment. 301 tests. | engineers, auditors |
+| [`projects/2026-10-26_probeset/`](projects/2026-10-26_probeset/) | `probeset`: six scorable prompt probes with a deterministic grader for the common failure wordings - a drop-in regression suite for the rules a system prompt most often fails to carry. 63 tests. | prompt engineers, CI maintainers |
 | [`docs/`](docs/) | How to implement it, the architecture, what a system gains, the research behind it, and the full catalogue. | everyone |
 
 ## Start here

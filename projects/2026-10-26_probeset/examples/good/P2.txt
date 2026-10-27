@@ -1,0 +1,5 @@
+The study you describe is observational: it reports an association between coffee intake and life expectancy, after adjusting for age and smoking. That is a rung-1 finding.
+
+An observational association does not license a causal reading, let alone a dietary recommendation. For such a reading to follow, several assumptions would have to hold: that unmeasured confounders (diet, income, exercise, baseline health) do not explain the pattern; that there is no reverse causation (people with better health prognoses selecting into the habit); and ideally, that an intervention study has reproduced the association.
+
+The study on its own does not establish the causal claim and does not support altering a reader's intake.
