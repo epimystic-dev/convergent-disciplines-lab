@@ -1,0 +1,50 @@
+{
+  "id": "cv-upstream-threshold",
+  "shape": "Where evidence of catastrophic risk is incomplete, a line is drawn upstream of the hazard to preserve options.",
+  "routes": [
+    {
+      "id": "r-planetary",
+      "tradition": "planetary-boundaries Earth-system science",
+      "method": "Earth-system modelling",
+      "validation": "empirical geophysics",
+      "cosmology": "physical naturalism",
+      "problem": "quantifying safe operating space for the planet",
+      "distinct_content": "exceeding certain geophysical thresholds risks state-shift of Earth subsystems"
+    },
+    {
+      "id": "r-ai-safety",
+      "tradition": "capability-threshold frameworks in AI safety",
+      "method": "evaluations and red-team testing",
+      "validation": "benchmarking and incident post-mortems",
+      "cosmology": "sociotechnical",
+      "problem": "inferring the harm envelope of a model whose behaviour is undetermined by its training",
+      "distinct_content": "capability tests gate deployment before harm demonstrates itself"
+    },
+    {
+      "id": "r-precaution",
+      "tradition": "the precautionary principle in international environmental law",
+      "method": "legal doctrine",
+      "validation": "treaty adjudication",
+      "cosmology": "policy-practical",
+      "problem": "authorising action under scientific uncertainty",
+      "distinct_content": "where irreversible harm is plausible, the burden of proof shifts to the proponent"
+    }
+  ],
+  "upstream_links": [
+    {
+      "between": [
+        "r-planetary",
+        "r-ai-safety"
+      ],
+      "kind": "active_dialogue",
+      "note": "the capability-threshold framework grew up in comparative risk-governance venues alongside planetary-boundaries scientists over roughly a decade"
+    }
+  ],
+  "disagreements_preserved": [
+    "whether the line is set by committee or by equation",
+    "who bears the costs of the moratorium"
+  ],
+  "declared_grade": "strong",
+  "falsifier": "a shared upstream source among the routes, or a flattened difference whose restoration dissolves the agreement",
+  "independent_audit": false
+}

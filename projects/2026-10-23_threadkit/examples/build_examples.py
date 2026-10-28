@@ -117,6 +117,55 @@ CONVERGENCE_FLATTENED = {
     "falsifier": "none stated",
 }
 
+# Worked critic-search pair for docs/WORKED-CONVERGENCE-AUDIT.md: three routes that look
+# independent until a reader notices that two of them grew up in the same comparative-governance
+# conversation. Before the critic finds the dialogue, the ceiling computes to strong; after it is
+# recorded, the ceiling drops to partial and the declared strong grade becomes a finding.
+_UPSTREAM_ROUTES = [
+    {"id": "r-planetary", "tradition": "planetary-boundaries Earth-system science",
+     "method": "Earth-system modelling", "validation": "empirical geophysics", "cosmology": "physical naturalism",
+     "problem": "quantifying safe operating space for the planet",
+     "distinct_content": "exceeding certain geophysical thresholds risks state-shift of Earth subsystems"},
+    {"id": "r-ai-safety", "tradition": "capability-threshold frameworks in AI safety",
+     "method": "evaluations and red-team testing", "validation": "benchmarking and incident post-mortems", "cosmology": "sociotechnical",
+     "problem": "inferring the harm envelope of a model whose behaviour is undetermined by its training",
+     "distinct_content": "capability tests gate deployment before harm demonstrates itself"},
+    {"id": "r-precaution", "tradition": "the precautionary principle in international environmental law",
+     "method": "legal doctrine", "validation": "treaty adjudication", "cosmology": "policy-practical",
+     "problem": "authorising action under scientific uncertainty",
+     "distinct_content": "where irreversible harm is plausible, the burden of proof shifts to the proponent"},
+]
+_UPSTREAM_SHAPE = ("Where evidence of catastrophic risk is incomplete, a line is drawn upstream of "
+                   "the hazard to preserve options.")
+_UPSTREAM_DISAGREEMENTS = ["whether the line is set by committee or by equation",
+                           "who bears the costs of the moratorium"]
+_UPSTREAM_FALSIFIER = ("a shared upstream source among the routes, or a flattened difference "
+                       "whose restoration dissolves the agreement")
+
+CONVERGENCE_BEFORE_CRITIC = {
+    "id": "cv-upstream-threshold",
+    "shape": _UPSTREAM_SHAPE,
+    "routes": _UPSTREAM_ROUTES,
+    "disagreements_preserved": _UPSTREAM_DISAGREEMENTS,
+    "declared_grade": "strong",
+    "falsifier": _UPSTREAM_FALSIFIER,
+    "independent_audit": False,
+}
+
+CONVERGENCE_AFTER_CRITIC = {
+    "id": "cv-upstream-threshold",
+    "shape": _UPSTREAM_SHAPE,
+    "routes": _UPSTREAM_ROUTES,
+    "upstream_links": [
+        {"between": ["r-planetary", "r-ai-safety"], "kind": "active_dialogue",
+         "note": "the capability-threshold framework grew up in comparative risk-governance venues alongside planetary-boundaries scientists over roughly a decade"},
+    ],
+    "disagreements_preserved": _UPSTREAM_DISAGREEMENTS,
+    "declared_grade": "strong",
+    "falsifier": _UPSTREAM_FALSIFIER,
+    "independent_audit": False,
+}
+
 DIALOGUE = {
     "id": "dlg-1",
     "turns": [
@@ -263,6 +312,8 @@ def main():
     write("answer_moral.json", ANSWER_MORAL)
     write("convergence_relational.json", CONVERGENCE_GOOD)
     write("convergence_flattened.json", CONVERGENCE_FLATTENED)
+    write("convergence_before_critic.json", CONVERGENCE_BEFORE_CRITIC)
+    write("convergence_after_critic.json", CONVERGENCE_AFTER_CRITIC)
     write("dialogue_evasive.json", DIALOGUE)
     write("dialogue_good.json", DIALOGUE_GOOD)
     write("decision_good.json", DECISION_GOOD)
