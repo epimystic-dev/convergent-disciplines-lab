@@ -24,6 +24,8 @@ from .cooperation import ReciprocityAgent, LineageReputation, ostrom_audit
 from .consensus import tally
 from .governor import AnswerGovernor, Governed
 from .audit import audit
+from .adapter import (Adapted, Repair, adapt, extract_json_block, govern_free_text,
+                      permissive_loads, repair_answer)
 
 __all__ = [
     "__version__", "Threads", "load", "contract_validator", "threads_validator", "prompt_text", "CONTRACTS",
@@ -31,4 +33,6 @@ __all__ = [
     "parse_tagged", "classify_rung", "assess", "Assessment", "DisagreementRegister", "variability",
     "lint_dialogue", "plural_answer", "natural_frequency", "ReciprocityAgent", "LineageReputation",
     "ostrom_audit", "tally", "AnswerGovernor", "Governed", "audit",
+    "Adapted", "Repair", "adapt", "extract_json_block", "govern_free_text",
+    "permissive_loads", "repair_answer",
 ]

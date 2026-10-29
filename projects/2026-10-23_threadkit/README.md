@@ -61,6 +61,7 @@ output is ASCII: diacritics are folded (`niskama`) and the standing glyphs are s
 | `threadkit.consensus` | A5 | multi-agent votes grouped by lineage, each lineage one witness, with a diversity attestation required |
 | `threadkit.review` | F1-F5, A1, A3, A4, A10, A12, D7, K5, F7, P1 | the four-move design review with its impact sections: practice and foundations, no self-continuation objective, the relations and shared media, who gains and who pays, the three freedoms and four commons, the eight capacities, the infrastructure layers, the discourse test |
 | `threadkit.governor` | the answer-level lessons | `AnswerGovernor` composes the claim, causal, deliberation, self-description, mode, moral and disagreement checks around a model's draft answer and renders it with each claim's standing visible |
+| `threadkit.adapter` | - | `govern_free_text` extracts the answer record from a model's reply (code fences, preamble, trailing commas, Python True/False/None), repairs the common schema slips (bare `basis: "testimony"`, bare `deliberation: "fast"`, rung as `"2"`, enum capitalisation, null for optional nested objects) and then governs it; each repair is logged, nothing content-bearing is rewritten |
 | `threadkit.audit` | all | audits a deployment declaration (rules below) |
 
 ## Library use
