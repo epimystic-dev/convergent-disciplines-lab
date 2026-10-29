@@ -1,0 +1,11 @@
+{
+  "id": "bad-gate-prose-trigger",
+  "title": "A gate with a prose-only trigger",
+  "kind": "gate",
+  "statement": "We will not deploy a model that could meaningfully assist a bad actor.",
+  "committed_at": "2026-02-01",
+  "last_reviewed_at": "2026-10-01",
+  "trigger": {"statement": "the model could meaningfully assist a bad actor"},
+  "enforcer": {"kind": "independent-reviewer", "named": "Example External Review Panel"},
+  "dependencies": [{"kind": "operational", "statement": "red-team budget retained"}]
+}

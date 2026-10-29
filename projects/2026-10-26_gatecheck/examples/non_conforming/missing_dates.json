@@ -1,0 +1,10 @@
+{
+  "id": "bad-gate-missing-dates",
+  "title": "A gate with neither a committed_at nor a last_reviewed_at",
+  "kind": "gate",
+  "statement": "No deployment above the named threshold.",
+  "committed_at": "",
+  "trigger": {"metric": "example-biosec-uplift-benchmark-v1", "threshold": 0.08, "measurable": true},
+  "enforcer": {"kind": "independent-reviewer", "named": "Example External Review Panel"},
+  "dependencies": [{"kind": "benchmark", "statement": "the benchmark remains valid"}]
+}

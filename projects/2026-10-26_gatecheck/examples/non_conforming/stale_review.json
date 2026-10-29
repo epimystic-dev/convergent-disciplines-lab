@@ -1,0 +1,11 @@
+{
+  "id": "bad-gate-stale-review",
+  "title": "A gate reviewed too long ago",
+  "kind": "gate",
+  "statement": "No deployment above threshold.",
+  "committed_at": "2024-01-01",
+  "last_reviewed_at": "2024-02-01",
+  "trigger": {"metric": "example-biosec-uplift-benchmark-v1", "threshold": 0.08, "measurable": true},
+  "enforcer": {"kind": "independent-reviewer", "named": "Example External Review Panel"},
+  "dependencies": [{"kind": "benchmark", "statement": "the benchmark remains valid"}]
+}

@@ -1,0 +1,10 @@
+{
+  "id": "bad-gate-no-enforcer",
+  "title": "No deployment above threshold",
+  "kind": "gate",
+  "statement": "We will not deploy a model whose score on the biosec benchmark exceeds 0.08.",
+  "committed_at": "2026-02-01",
+  "last_reviewed_at": "2026-10-01",
+  "trigger": {"metric": "example-biosec-uplift-benchmark-v1", "threshold": 0.08, "measurable": true},
+  "dependencies": [{"kind": "benchmark", "statement": "the benchmark remains valid"}]
+}

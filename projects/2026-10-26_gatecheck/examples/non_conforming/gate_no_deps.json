@@ -1,0 +1,10 @@
+{
+  "id": "bad-gate-no-deps",
+  "title": "A gate with no declared dependencies",
+  "kind": "gate",
+  "statement": "No deployment above the named threshold.",
+  "committed_at": "2026-02-01",
+  "last_reviewed_at": "2026-10-01",
+  "trigger": {"metric": "example-biosec-uplift-benchmark-v1", "threshold": 0.08, "measurable": true},
+  "enforcer": {"kind": "independent-reviewer", "named": "Example External Review Panel"}
+}

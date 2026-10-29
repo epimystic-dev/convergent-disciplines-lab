@@ -1,0 +1,17 @@
+{
+  "id": "bad-gate-competitor-contingent",
+  "title": "We will pause deployment unilaterally if a red line is approached",
+  "kind": "gate",
+  "statement": "The organisation will pause unilaterally if any of the named red-line capabilities are approached, unless competitors do not pause.",
+  "committed_at": "2026-02-01",
+  "last_reviewed_at": "2026-10-01",
+  "trigger": {"metric": "red-line-capability-threshold-v1", "threshold": 1.0, "measurable": true},
+  "enforcer": {"kind": "independent-reviewer", "named": "Example External Review Panel"},
+  "dependencies": [{"kind": "benchmark", "statement": "the capability eval remains valid"}],
+  "escape_clauses": [
+    {
+      "statement": "unless named competitors do not pause under the same conditions",
+      "competitor_contingent": true
+    }
+  ]
+}

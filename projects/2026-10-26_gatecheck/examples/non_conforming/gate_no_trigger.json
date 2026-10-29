@@ -1,0 +1,9 @@
+{
+  "id": "bad-gate-no-trigger",
+  "title": "We will not deploy a dangerous model",
+  "kind": "gate",
+  "statement": "We will not externally deploy a model that could meaningfully assist in catastrophic harm.",
+  "committed_at": "2026-02-01",
+  "last_reviewed_at": "2026-10-01",
+  "enforcer": {"kind": "self-attested"}
+}

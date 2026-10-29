@@ -1,0 +1,11 @@
+{
+  "id": "bad-gate-self-attested",
+  "title": "A gate whose enforcer is self-attested",
+  "kind": "gate",
+  "statement": "No deployment above the named threshold.",
+  "committed_at": "2026-02-01",
+  "last_reviewed_at": "2026-10-01",
+  "trigger": {"metric": "example-biosec-uplift-benchmark-v1", "threshold": 0.08, "measurable": true},
+  "enforcer": {"kind": "self-attested", "named": "the organisation itself"},
+  "dependencies": [{"kind": "benchmark", "statement": "the benchmark remains valid"}]
+}

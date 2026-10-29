@@ -1,0 +1,20 @@
+{
+  "id": "ex-target-redteam-coverage",
+  "title": "Red-team coverage of 95 percent of named capability clusters",
+  "kind": "target",
+  "statement": "The organisation will red-team at least 95 percent of the named capability clusters before each major model release.",
+  "committed_at": "2026-03-01",
+  "last_reviewed_at": "2026-09-15",
+  "target_metric": "percent_of_capability_clusters_red_teamed_before_release",
+  "target_deadline": "2027-03-01",
+  "derived_from": {
+    "source": "Example AI Responsible-Scaling Policy v2",
+    "citation": "Section 5.1, red-team coverage target"
+  },
+  "externally_verifiable": true,
+  "enforcer": {
+    "kind": "independent-reviewer",
+    "named": "Example External Review Panel",
+    "external_check": "https://example.org/release-notes/"
+  }
+}

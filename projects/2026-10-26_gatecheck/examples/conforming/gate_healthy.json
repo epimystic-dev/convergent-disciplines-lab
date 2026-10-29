@@ -1,0 +1,32 @@
+{
+  "id": "ex-gate-biosec-v1",
+  "title": "No deployment above a measurable bio-uplift threshold",
+  "kind": "gate",
+  "statement": "The organisation will not externally deploy a model whose evaluated uplift on the named benchmark exceeds the stated threshold.",
+  "committed_at": "2026-04-15",
+  "last_reviewed_at": "2026-10-01",
+  "derived_from": {
+    "source": "Example AI Responsible-Scaling Policy v2",
+    "citation": "Section 4.2, bio-uplift gate",
+    "url": "https://example.org/rsp.pdf"
+  },
+  "trigger": {
+    "statement": "Evaluated uplift exceeds the published threshold on the named benchmark.",
+    "metric": "example-biosec-uplift-benchmark-v1",
+    "threshold": 0.08,
+    "measurement_window": "most recent eval, within 60 days of release decision",
+    "measurable": true
+  },
+  "enforcer": {
+    "kind": "independent-reviewer",
+    "named": "Example External Review Panel",
+    "escalation": "A failed gate halts deployment and is reported to the board within 10 business days.",
+    "external_check": "https://example.org/eval-reports/"
+  },
+  "dependencies": [
+    {"kind": "benchmark", "statement": "The named benchmark continues to be a valid proxy for uplift; if it is retired, the gate is reviewed within 90 days."},
+    {"kind": "operational", "statement": "The internal red-team retains the budget to run the eval ahead of each deploy."}
+  ],
+  "escape_clauses": [],
+  "externally_verifiable": true
+}

@@ -1,0 +1,17 @@
+{
+  "id": "bad-gate-escape-broader",
+  "title": "A gate whose escape clause names a different metric",
+  "kind": "gate",
+  "statement": "No deployment above the biosec uplift threshold, except where business necessity dictates.",
+  "committed_at": "2026-02-01",
+  "last_reviewed_at": "2026-10-01",
+  "trigger": {"metric": "example-biosec-uplift-benchmark-v1", "threshold": 0.08, "measurable": true},
+  "enforcer": {"kind": "independent-reviewer", "named": "Example External Review Panel"},
+  "dependencies": [{"kind": "benchmark", "statement": "the benchmark remains valid"}],
+  "escape_clauses": [
+    {
+      "statement": "unless strategic business necessity requires deployment",
+      "trigger_metric": "strategic-business-necessity"
+    }
+  ]
+}

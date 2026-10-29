@@ -1,0 +1,13 @@
+{
+  "name": "gatecheck",
+  "slug": "2026-10-26_gatecheck",
+  "kind": "linter",
+  "one_liner": "Lints commitment records against the gate-versus-target discipline (Rule A11): a 'gate' promises not to do X and must declare its trigger, its enforcer, its dependencies and the scope of any escape clause; a 'target' promises to do X and must declare a metric and a deadline; a commitment that is competitor-contingent must say which competitor and on what measurable signal.",
+  "problem": "Published AI red-lines and commitments are routinely written as prose - 'we will not deploy a model that can meaningfully assist in weapons of mass destruction', 'we commit to pause unilaterally if a redline is approached' - with no measurable trigger, no named enforcer, no stated dependencies and an escape clause ('unless competitors do not pause') that nullifies the commitment under conditions the original audience was never told. The industry-watch finding of Autumn 2026 is that several of the strongest published pledges have been weakened or voided under competitor-contingent clauses. gatecheck turns the gate-vs-target discipline into a machine-readable schema and a scanner so a commitment can be published, cited, pointed to in audit, and lint-checked by a team or an outside observer before it goes into print.",
+  "language": "python",
+  "test_cmd": "python -m unittest discover -s tests",
+  "build_cmd": "python -m pip install -e .",
+  "deps": [],
+  "license": "Apache-2.0",
+  "clean_room": "The commitment schema and twelve rules are implemented from lesson A11 of the threads (threads/threads.json, CC-BY-SA-4.0), adapted as recorded in NOTICE.md, and from the public commitment-tracking finding of Autumn 2026. The schema structure, the rule semantics and the scanner are this lab's own; no third-party implementation was read, vendored or mirrored."
+}

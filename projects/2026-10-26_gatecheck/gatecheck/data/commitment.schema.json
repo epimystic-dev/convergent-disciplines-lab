@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "$id": "https://epimystic.com/schemas/commitment/v1",
+  "title": "Commitment",
+  "description": "A commitment record: a promise an organisation has made about what it will or will not do, with the structure a reader needs to check whether the promise can be verified.",
+  "type": "object",
+  "required": ["id", "title", "kind", "committed_at"],
+  "additionalProperties": true,
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "title": {"type": "string", "minLength": 1},
+    "kind": {"type": "string", "enum": ["gate", "target"]},
+    "statement": {"type": "string", "description": "the prose text of the commitment as it was published"},
+    "committed_at": {"type": "string", "description": "ISO-8601 date the commitment was first made"},
+    "last_reviewed_at": {"type": "string", "description": "ISO-8601 date of the most recent public review"},
+    "derived_from": {
+      "type": "object",
+      "description": "the publicly-cited principle or policy the commitment implements",
+      "properties": {
+        "source": {"type": "string"},
+        "url": {"type": "string"},
+        "citation": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "trigger": {
+      "type": "object",
+      "description": "the condition under which the commitment applies or activates",
+      "properties": {
+        "statement": {"type": "string"},
+        "metric": {"type": "string", "description": "a named measurable, or a reference to one"},
+        "threshold": {"description": "the value or interval at which the trigger fires"},
+        "measurement_window": {"type": "string"},
+        "measurable": {"type": "boolean"}
+      },
+      "additionalProperties": true
+    },
+    "enforcer": {
+      "type": "object",
+      "description": "who or what checks and enforces this commitment",
+      "properties": {
+        "kind": {"type": "string", "enum": ["self-attested", "internal-reviewer", "independent-reviewer", "regulator", "contractual"]},
+        "named": {"type": "string"},
+        "escalation": {"type": "string"},
+        "external_check": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "dependencies": {
+      "type": "array",
+      "description": "external facts or systems whose change would invalidate or alter this commitment",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {"type": "string"},
+          "statement": {"type": "string"}
+        },
+        "additionalProperties": true
+      }
+    },
+    "escape_clauses": {
+      "type": "array",
+      "description": "exemptions or conditions under which the commitment does not bind",
+      "items": {
+        "type": "object",
+        "properties": {
+          "statement": {"type": "string"},
+          "scope": {"type": "string", "description": "the specific trigger-metric this clause narrows; broader than that is a scope-expansion"},
+          "competitor_contingent": {"type": "boolean"},
+          "named_competitor": {"type": "string"},
+          "trigger_metric": {"type": "string"}
+        },
+        "additionalProperties": true
+      }
+    },
+    "target_metric": {"type": "string", "description": "for kind=target: the measurable the organisation commits to"},
+    "target_deadline": {"type": "string", "description": "for kind=target: the deadline by which the metric is to be met"},
+    "externally_verifiable": {"type": "boolean", "description": "whether a reader outside the organisation can confirm compliance"}
+  }
+}

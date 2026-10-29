@@ -1,0 +1,8 @@
+{
+  "id": "bad-unknown-kind",
+  "title": "A pledge of unspecified type",
+  "kind": "pledge",
+  "statement": "We pledge to be responsible.",
+  "committed_at": "2026-02-01",
+  "last_reviewed_at": "2026-10-01"
+}

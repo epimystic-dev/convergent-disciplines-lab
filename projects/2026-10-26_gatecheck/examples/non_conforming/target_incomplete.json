@@ -1,0 +1,8 @@
+{
+  "id": "bad-target-incomplete",
+  "title": "We commit to improve red-team coverage",
+  "kind": "target",
+  "statement": "The organisation will improve red-team coverage substantially.",
+  "committed_at": "2026-02-01",
+  "last_reviewed_at": "2026-10-01"
+}
