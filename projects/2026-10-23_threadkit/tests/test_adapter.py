@@ -40,6 +40,28 @@ class ExtractJsonBlock(unittest.TestCase):
     def test_text_without_braces_returned_stripped(self):
         self.assertEqual(extract_json_block("  no JSON here\n"), "no JSON here")
 
+    def test_preamble_example_does_not_shadow_record(self):
+        """A JSON-ish example in prose preamble must not be returned in place of the real
+        record. The record (the LAST top-level balanced block) wins.
+        """
+        s = "Example: {\"k\": 1}. Record: {\"id\": \"a\"}"
+        self.assertEqual(extract_json_block(s), "{\"id\": \"a\"}")
+
+    def test_two_balanced_siblings_last_wins(self):
+        s = "{\"first\": 1} {\"second\": 2}"
+        self.assertEqual(extract_json_block(s), "{\"second\": 2}")
+
+    def test_balanced_then_unterminated_balanced_wins(self):
+        """A trailing unterminated block (e.g. a truncated response after an inline example)
+        does not override a prior balanced block - we return something a parser can accept.
+        """
+        s = "{\"ok\": 1} {\"never-closed\":"
+        self.assertEqual(extract_json_block(s), "{\"ok\": 1}")
+
+    def test_only_unterminated_returns_tail(self):
+        s = "prefix {\"never-closed\":"
+        self.assertEqual(extract_json_block(s), "{\"never-closed\":")
+
 
 class PermissiveLoads(unittest.TestCase):
     def test_strict_json_passes_through(self):
@@ -218,6 +240,19 @@ class Adapt(unittest.TestCase):
         rec, reps, err = adapt("Here is the record:\n\n" + json.dumps(a))
         self.assertIsNone(err)
         self.assertEqual(rec["id"], a["id"])
+
+    def test_preamble_json_example_does_not_shadow_record(self):
+        """The adapter must pick the real record over any JSON-ish example appearing earlier
+        in prose. Before this fix, `adapt` returned the preamble's `{"k": 1}` with no parse
+        error, and the user then saw a confusing GOV-000 from the governor with no hint that
+        the actual record had been silently dropped.
+        """
+        a = answer(mode="inquiry", claims=[claim(standing="settled", basis={"kind": "observation"})])
+        prose = "Example (NOT the record): {\"k\": 1}.\n\nActual record:\n" + json.dumps(a)
+        rec, reps, err = adapt(prose)
+        self.assertIsNone(err)
+        self.assertEqual(rec["id"], a["id"])
+        self.assertEqual(rec["mode"], "inquiry")
 
 
 class GovernFreeText(unittest.TestCase):

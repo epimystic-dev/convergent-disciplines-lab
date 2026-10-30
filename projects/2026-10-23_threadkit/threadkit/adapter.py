@@ -75,41 +75,64 @@ def extract_json_block(text: str) -> str:
     """Pull the JSON object out of free-form text.
 
     If the text is wrapped in a ``` fence (optionally language-tagged), the fenced content is
-    taken. Otherwise, the substring from the first `{` through its matching close brace is
-    taken by counting brackets while respecting string literals. If there is no `{` the
-    stripped input is returned unchanged, so the caller still sees whatever the model emitted.
+    taken. Otherwise each balanced top-level `{...}` substring is identified by walking the
+    characters and respecting string literals, and the LAST such block is returned - a model
+    trained to emit a structured answer typically narrates first and emits the record at the
+    end, so an inline JSON-ish example in the preamble (e.g. a schema fragment or a config
+    snippet) must not shadow the real record. If no `{` is present, the stripped input is
+    returned unchanged; if a `{` opens a block that is never closed, the unterminated tail is
+    returned so the parser can fail cleanly on it (unless a balanced block came before, in
+    which case the balanced block wins).
     """
     s = text.strip()
     m = _FENCE_RE.match(s)
     if m is not None:
         s = m.group(1).strip()
-    start = s.find("{")
-    if start < 0:
+    if "{" not in s:
         return s
-    depth = 0
-    in_string = False
-    escape = False
-    for i in range(start, len(s)):
-        ch = s[i]
-        if escape:
-            escape = False
-            continue
-        if in_string:
-            if ch == "\\":
-                escape = True
-            elif ch == "\"":
-                in_string = False
-            continue
-        if ch == "\"":
-            in_string = True
-            continue
-        if ch == "{":
-            depth += 1
-        elif ch == "}":
-            depth -= 1
-            if depth == 0:
-                return s[start:i + 1]
-    return s[start:]
+    blocks: List[str] = []
+    unterminated: Optional[str] = None
+    cursor = 0
+    while cursor < len(s):
+        start = s.find("{", cursor)
+        if start < 0:
+            break
+        depth = 0
+        in_string = False
+        escape = False
+        closed_end = -1
+        for i in range(start, len(s)):
+            ch = s[i]
+            if escape:
+                escape = False
+                continue
+            if in_string:
+                if ch == "\\":
+                    escape = True
+                elif ch == "\"":
+                    in_string = False
+                continue
+            if ch == "\"":
+                in_string = True
+                continue
+            if ch == "{":
+                depth += 1
+            elif ch == "}":
+                depth -= 1
+                if depth == 0:
+                    closed_end = i + 1
+                    break
+        if closed_end >= 0:
+            blocks.append(s[start:closed_end])
+            cursor = closed_end
+        else:
+            unterminated = s[start:]
+            break
+    if blocks:
+        return blocks[-1]
+    if unterminated is not None:
+        return unterminated
+    return s
 
 
 def _patch_outside_strings(text: str) -> str:
