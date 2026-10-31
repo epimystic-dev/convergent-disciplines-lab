@@ -20,7 +20,7 @@ from dataclasses import dataclass, field
 from typing import Dict, Iterable, List, Mapping, Optional, Sequence
 
 from .findings import Finding, Severity, Verdict, sort_findings, verdict_from
-from .probes import Probe, ProbeSet, FailPattern, PassPattern
+from .probes import KNOWN_CUSTOM_CHECKS, Probe, ProbeSet, FailPattern, PassPattern
 
 
 _RUNG_WORDS = ("associat", "correlat", "causat", "causal", "intervention", "confound",
@@ -46,11 +46,28 @@ class GradeResult(object):
         }
 
 
+def _missing_rung_vocab(response: str) -> bool:
+    lo = response.lower()
+    return not any(w in lo for w in _RUNG_WORDS)
+
+
+_CUSTOM_IMPLS = {
+    "missing_rung_vocab": _missing_rung_vocab,
+}
+
+if frozenset(_CUSTOM_IMPLS) != KNOWN_CUSTOM_CHECKS:
+    missing = sorted(KNOWN_CUSTOM_CHECKS - frozenset(_CUSTOM_IMPLS))
+    extra = sorted(frozenset(_CUSTOM_IMPLS) - KNOWN_CUSTOM_CHECKS)
+    raise RuntimeError(
+        "probes.KNOWN_CUSTOM_CHECKS and grade._CUSTOM_IMPLS have drifted; "
+        "named-but-unimplemented: %s; implemented-but-unregistered: %s" % (missing, extra))
+
+
 def _run_custom(name: str, response: str) -> bool:
-    if name == "missing_rung_vocab":
-        lo = response.lower()
-        return not any(w in lo for w in _RUNG_WORDS)
-    return False
+    impl = _CUSTOM_IMPLS.get(name)
+    if impl is None:
+        return False
+    return impl(response)
 
 
 def _grade_fails(probe: Probe, response: str) -> List[Finding]:

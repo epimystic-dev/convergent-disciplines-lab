@@ -71,9 +71,31 @@ def _as_tuple(seq: Optional[Sequence[Any]]) -> tuple:
     return tuple(seq) if seq is not None else ()
 
 
+KNOWN_CUSTOM_CHECKS = frozenset(["missing_rung_vocab"])
+"""Named custom fail-checks the grader implements. The grader dispatches on this name,
+so a typo in a probes.json `custom` field would silently disable the check (an unknown
+name just returns False from the dispatcher, and the probe author would see a probe
+that never flags without knowing why). Any `custom` value in a probes.json fail pattern
+MUST be in this set; the loader rejects unknown names at load time rather than letting
+the grader silently no-op. The grade module asserts its implemented set matches this
+one at import time, so adding a new check to one side without the other is caught.
+"""
+
+
 def _fail(d: Dict[str, Any]) -> FailPattern:
-    return FailPattern(id=d["id"], severity=d["severity"], pattern=d.get("pattern"),
-                       message=d["message"], custom=d.get("custom", ""))
+    custom = d.get("custom", "")
+    pattern = d.get("pattern")
+    if custom and custom not in KNOWN_CUSTOM_CHECKS:
+        known = ", ".join(sorted(KNOWN_CUSTOM_CHECKS))
+        raise ValueError(
+            "fail pattern %r names an unknown custom check %r; known: %s"
+            % (d.get("id", "?"), custom, known))
+    if pattern is None and not custom:
+        raise ValueError(
+            "fail pattern %r has neither a pattern nor a custom check; "
+            "it would never flag anything" % d.get("id", "?"))
+    return FailPattern(id=d["id"], severity=d["severity"], pattern=pattern,
+                       message=d["message"], custom=custom)
 
 
 def _passp(d: Dict[str, Any]) -> PassPattern:
