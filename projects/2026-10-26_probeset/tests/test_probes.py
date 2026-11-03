@@ -169,5 +169,66 @@ class CustomCheckValidation(unittest.TestCase):
         self.assertEqual(frozenset(_CUSTOM_IMPLS), KNOWN_CUSTOM_CHECKS)
 
 
+class RegexValidation(unittest.TestCase):
+    """A syntactically invalid regex in a probes.json fail pattern used to load silently
+    (the pattern was compiled lazily inside the `compiled` property); the first time the
+    probe actually ran, grading crashed with a cryptic `re.error`, far from the authoring
+    mistake. The loader now compiles every pattern at load time and rejects an invalid
+    regex with a ValueError that names the fail-pattern id and the regex error reason.
+    """
+
+    @staticmethod
+    def _write(data):
+        tmp = tempfile.NamedTemporaryFile(delete=False, suffix=".json", mode="w", encoding="utf-8")
+        try:
+            json.dump(data, tmp)
+            tmp.close()
+            return tmp.name
+        except Exception:
+            tmp.close()
+            os.unlink(tmp.name)
+            raise
+
+    def test_invalid_regex_rejected_at_load(self):
+        path = self._write({
+            "version": "0.0.0",
+            "source": {"license": "CC-BY-SA-4.0"},
+            "probes": [{
+                "id": "X1", "rule": "r", "input": "i", "expect": "e",
+                "fail_patterns": [{"id": "X1-badre", "severity": "HIGH",
+                                    "pattern": "(unclosed",
+                                    "message": "bad regex"}],
+                "pass_patterns": [],
+            }],
+        })
+        try:
+            with self.assertRaises(ValueError) as cm:
+                load_probes(path)
+            msg = str(cm.exception)
+            self.assertIn("X1-badre", msg)
+            self.assertIn("invalid regex", msg)
+        finally:
+            os.unlink(path)
+
+    def test_valid_regex_still_loads(self):
+        path = self._write({
+            "version": "0.0.0",
+            "source": {"license": "CC-BY-SA-4.0"},
+            "probes": [{
+                "id": "X1", "rule": "r", "input": "i", "expect": "e",
+                "fail_patterns": [{"id": "X1-okre", "severity": "HIGH",
+                                    "pattern": r"\byes\b",
+                                    "message": "flat yes"}],
+                "pass_patterns": [],
+            }],
+        })
+        try:
+            ps = load_probes(path)
+            self.assertEqual(ps.probes[0].fail_patterns[0].pattern, r"\byes\b")
+            self.assertIsNotNone(ps.probes[0].fail_patterns[0].compiled.search("yes"))
+        finally:
+            os.unlink(path)
+
+
 if __name__ == "__main__":  # pragma: no cover
     unittest.main()

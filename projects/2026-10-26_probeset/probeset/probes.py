@@ -94,6 +94,13 @@ def _fail(d: Dict[str, Any]) -> FailPattern:
         raise ValueError(
             "fail pattern %r has neither a pattern nor a custom check; "
             "it would never flag anything" % d.get("id", "?"))
+    if pattern is not None:
+        try:
+            re.compile(pattern)
+        except re.error as exc:
+            raise ValueError(
+                "fail pattern %r has an invalid regex: %s"
+                % (d.get("id", "?"), exc))
     return FailPattern(id=d["id"], severity=d["severity"], pattern=pattern,
                        message=d["message"], custom=custom)
 
