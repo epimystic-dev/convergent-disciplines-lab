@@ -13,6 +13,8 @@ import re
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Sequence, Tuple
 
+from .findings import Severity
+
 
 DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
 PROBES_PATH = os.path.join(DATA_DIR, "probes.json")
@@ -85,6 +87,12 @@ one at import time, so adding a new check to one side without the other is caugh
 def _fail(d: Dict[str, Any]) -> FailPattern:
     custom = d.get("custom", "")
     pattern = d.get("pattern")
+    severity = d["severity"]
+    if severity not in Severity.ALL:
+        known = ", ".join(Severity.ALL)
+        raise ValueError(
+            "fail pattern %r has an unknown severity %r; known: %s"
+            % (d.get("id", "?"), severity, known))
     if custom and custom not in KNOWN_CUSTOM_CHECKS:
         known = ", ".join(sorted(KNOWN_CUSTOM_CHECKS))
         raise ValueError(
@@ -101,7 +109,7 @@ def _fail(d: Dict[str, Any]) -> FailPattern:
             raise ValueError(
                 "fail pattern %r has an invalid regex: %s"
                 % (d.get("id", "?"), exc))
-    return FailPattern(id=d["id"], severity=d["severity"], pattern=pattern,
+    return FailPattern(id=d["id"], severity=severity, pattern=pattern,
                        message=d["message"], custom=custom)
 
 

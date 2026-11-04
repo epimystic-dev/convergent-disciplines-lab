@@ -230,5 +230,89 @@ class RegexValidation(unittest.TestCase):
             os.unlink(path)
 
 
+class SeverityValidation(unittest.TestCase):
+    """A misspelled severity in a probes.json fail pattern used to load silently; if the
+    probe then flagged anything, the grader crashed with a cryptic `KeyError` inside
+    `sort_findings` (which indexes an ordering map keyed on the known severities), far
+    from the authoring mistake. Worse, if the probe never flagged, `verdict_from` would
+    silently treat the unknown severity as benign and roll up HEALTHY. The loader now
+    rejects any severity not in `findings.Severity.ALL` with a ValueError naming the
+    fail-pattern id and the bad value.
+    """
+
+    @staticmethod
+    def _write(data):
+        tmp = tempfile.NamedTemporaryFile(delete=False, suffix=".json", mode="w", encoding="utf-8")
+        try:
+            json.dump(data, tmp)
+            tmp.close()
+            return tmp.name
+        except Exception:
+            tmp.close()
+            os.unlink(tmp.name)
+            raise
+
+    def test_unknown_severity_rejected_at_load(self):
+        path = self._write({
+            "version": "0.0.0",
+            "source": {"license": "CC-BY-SA-4.0"},
+            "probes": [{
+                "id": "X1", "rule": "r", "input": "i", "expect": "e",
+                "fail_patterns": [{"id": "X1-sev", "severity": "LOW",
+                                    "pattern": "foo",
+                                    "message": "misspelled severity"}],
+                "pass_patterns": [],
+            }],
+        })
+        try:
+            with self.assertRaises(ValueError) as cm:
+                load_probes(path)
+            msg = str(cm.exception)
+            self.assertIn("X1-sev", msg)
+            self.assertIn("LOW", msg)
+            self.assertIn("HIGH", msg)
+        finally:
+            os.unlink(path)
+
+    def test_lowercase_severity_rejected_at_load(self):
+        """The known severities are case-sensitive ALL-CAPS; a lowercase match is still a
+        bug because sort_findings indexes the exact string."""
+        path = self._write({
+            "version": "0.0.0",
+            "source": {"license": "CC-BY-SA-4.0"},
+            "probes": [{
+                "id": "X1", "rule": "r", "input": "i", "expect": "e",
+                "fail_patterns": [{"id": "X1-lsev", "severity": "high",
+                                    "pattern": "foo",
+                                    "message": "case-wrong severity"}],
+                "pass_patterns": [],
+            }],
+        })
+        try:
+            with self.assertRaises(ValueError) as cm:
+                load_probes(path)
+            self.assertIn("X1-lsev", str(cm.exception))
+        finally:
+            os.unlink(path)
+
+    def test_known_severity_still_loads(self):
+        path = self._write({
+            "version": "0.0.0",
+            "source": {"license": "CC-BY-SA-4.0"},
+            "probes": [{
+                "id": "X1", "rule": "r", "input": "i", "expect": "e",
+                "fail_patterns": [{"id": "X1-ok", "severity": "MEDIUM",
+                                    "pattern": "foo",
+                                    "message": "fine severity"}],
+                "pass_patterns": [],
+            }],
+        })
+        try:
+            ps = load_probes(path)
+            self.assertEqual(ps.probes[0].fail_patterns[0].severity, "MEDIUM")
+        finally:
+            os.unlink(path)
+
+
 if __name__ == "__main__":  # pragma: no cover
     unittest.main()
