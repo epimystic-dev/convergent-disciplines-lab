@@ -120,6 +120,37 @@ class RuleRegistry(unittest.TestCase):
             ALL_RULES[0].severity = "nope"  # type: ignore[misc]
 
 
+class ShapeSlipsDoNotCrashScan(unittest.TestCase):
+    """Pin: records with wrong-type trigger/enforcer/escape_clauses no longer AttributeError in scan."""
+
+    def _scan(self, record):
+        return scan_record(record)
+
+    def test_trigger_as_string_does_not_crash(self):
+        r = self._scan({"id": "x", "kind": "gate", "trigger": "prose"})
+        self.assertIn("GATE-011", codes(r.findings))
+
+    def test_enforcer_as_string_does_not_crash(self):
+        r = self._scan({"id": "x", "kind": "gate", "trigger": {"metric": "m"},
+                        "enforcer": "self"})
+        self.assertIsInstance(codes(r.findings), list)
+
+    def test_escape_clauses_as_dict_does_not_crash(self):
+        r = self._scan({"id": "x", "kind": "gate", "trigger": {"metric": "m"},
+                        "escape_clauses": {"c1": {}}})
+        self.assertIsInstance(codes(r.findings), list)
+
+    def test_escape_clause_items_non_dict_are_skipped(self):
+        r = self._scan({"id": "x", "kind": "gate", "trigger": {"metric": "m"},
+                        "escape_clauses": ["bail", None, 7]})
+        self.assertIsInstance(codes(r.findings), list)
+
+    def test_externally_verifiable_with_non_dict_enforcer_does_not_crash(self):
+        r = self._scan({"id": "x", "kind": "gate", "trigger": {"metric": "m"},
+                        "externally_verifiable": True, "enforcer": "someone"})
+        self.assertIn("GATE-012", codes(r.findings))
+
+
 class Disable(unittest.TestCase):
     def test_disable_rule(self):
         r = scan_record(load(bad("gate_self_attested")), disabled=["GATE-003"])

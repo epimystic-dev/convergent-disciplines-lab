@@ -32,6 +32,18 @@ def _subject(record: Dict[str, Any]) -> str:
     return str(record.get("id", "<unknown>"))
 
 
+def _as_dict(value: Any) -> Dict[str, Any]:
+    """Coerce a nested field to a dict so the rules never crash on wrong shape; validate surfaces shape errors."""
+    return value if isinstance(value, dict) else {}
+
+
+def _dict_items(value: Any) -> List[Dict[str, Any]]:
+    """Drop non-dict items from a list and return []; same rationale as _as_dict."""
+    if not isinstance(value, list):
+        return []
+    return [item for item in value if isinstance(item, dict)]
+
+
 def _parse_iso(s: Any) -> Optional[date]:
     if not isinstance(s, str) or not s:
         return None
@@ -61,7 +73,7 @@ def _rule_002(record: Dict[str, Any], subject: str) -> List[Finding]:
 
 
 def _rule_003(record: Dict[str, Any], subject: str) -> List[Finding]:
-    enf = record.get("enforcer") or {}
+    enf = _as_dict(record.get("enforcer"))
     if record.get("kind") == "gate" and enf.get("kind") == "self-attested":
         return [Finding("GATE-003", Severity.MEDIUM, subject,
                         "the enforcer is self-attested; an independent reviewer, a regulator or a contractual enforcer is stronger.")]
@@ -70,7 +82,7 @@ def _rule_003(record: Dict[str, Any], subject: str) -> List[Finding]:
 
 def _rule_004(record: Dict[str, Any], subject: str) -> List[Finding]:
     out = []
-    for i, clause in enumerate(record.get("escape_clauses") or []):
+    for i, clause in enumerate(_dict_items(record.get("escape_clauses"))):
         if clause.get("competitor_contingent"):
             if not clause.get("named_competitor") or not clause.get("trigger_metric"):
                 out.append(Finding("GATE-004", Severity.MEDIUM, subject,
@@ -100,9 +112,9 @@ def _rule_006(record: Dict[str, Any], subject: str) -> List[Finding]:
 
 def _rule_007(record: Dict[str, Any], subject: str) -> List[Finding]:
     out = []
-    trig = record.get("trigger") or {}
+    trig = _as_dict(record.get("trigger"))
     trig_metric = trig.get("metric")
-    for i, clause in enumerate(record.get("escape_clauses") or []):
+    for i, clause in enumerate(_dict_items(record.get("escape_clauses"))):
         scope = clause.get("scope")
         clause_metric = clause.get("trigger_metric")
         if trig_metric:
@@ -159,9 +171,10 @@ def _rule_010(record: Dict[str, Any], subject: str) -> List[Finding]:
 def _rule_011(record: Dict[str, Any], subject: str) -> List[Finding]:
     if record.get("kind") != "gate":
         return []
-    trig = record.get("trigger")
-    if not trig:
+    raw = record.get("trigger")
+    if not raw:
         return []
+    trig = _as_dict(raw)
     has_metric = bool(trig.get("metric"))
     marked_measurable = trig.get("measurable") is True
     if not has_metric and not marked_measurable:
@@ -172,7 +185,7 @@ def _rule_011(record: Dict[str, Any], subject: str) -> List[Finding]:
 
 def _rule_012(record: Dict[str, Any], subject: str) -> List[Finding]:
     if record.get("externally_verifiable") is True:
-        enf = record.get("enforcer") or {}
+        enf = _as_dict(record.get("enforcer"))
         if not enf.get("external_check"):
             return [Finding("GATE-012", Severity.MEDIUM, subject,
                             "externally_verifiable is true but the enforcer has no external_check; name the external audit, API, log or report "
