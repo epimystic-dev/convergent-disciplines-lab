@@ -314,5 +314,143 @@ class SeverityValidation(unittest.TestCase):
             os.unlink(path)
 
 
+class ShapeSlipValidation(unittest.TestCase):
+    """A probes.json where a field has the wrong JSON shape (a dict where a list was
+    expected, an item that is a string or None instead of an object, and so on) used to
+    fail with a cryptic `AttributeError: 'str' object has no attribute 'get'` or
+    `TypeError: string indices must be integers` far from the field that was wrong -
+    especially unhelpful for hand-edited files or YAML-to-JSON exports that collapse a
+    single-element list into a bare object. The loader now raises a ValueError naming
+    the probe id (when known) and the field whose shape was wrong.
+
+    This mirrors the same fault family that was fixed in the sibling gatecheck project
+    on 2026-11-05.
+    """
+
+    @staticmethod
+    def _write(data):
+        tmp = tempfile.NamedTemporaryFile(delete=False, suffix=".json", mode="w", encoding="utf-8")
+        try:
+            json.dump(data, tmp)
+            tmp.close()
+            return tmp.name
+        except Exception:
+            tmp.close()
+            os.unlink(tmp.name)
+            raise
+
+    def test_fail_patterns_as_dict_rejected(self):
+        path = self._write({
+            "version": "0.0.0", "source": {"license": "CC-BY-SA-4.0"},
+            "probes": [{
+                "id": "X1", "rule": "r", "input": "i", "expect": "e",
+                "fail_patterns": {"F1": {"id": "F1", "severity": "HIGH",
+                                          "pattern": "x", "message": "m"}},
+                "pass_patterns": [],
+            }],
+        })
+        try:
+            with self.assertRaises(ValueError) as cm:
+                load_probes(path)
+            msg = str(cm.exception)
+            self.assertIn("X1", msg)
+            self.assertIn("fail_patterns", msg)
+            self.assertIn("array", msg)
+        finally:
+            os.unlink(path)
+
+    def test_fail_pattern_item_as_string_rejected(self):
+        path = self._write({
+            "version": "0.0.0", "source": {"license": "CC-BY-SA-4.0"},
+            "probes": [{
+                "id": "X2", "rule": "r", "input": "i", "expect": "e",
+                "fail_patterns": ["bad-should-be-a-dict"],
+                "pass_patterns": [],
+            }],
+        })
+        try:
+            with self.assertRaises(ValueError) as cm:
+                load_probes(path)
+            msg = str(cm.exception)
+            self.assertIn("X2", msg)
+            self.assertIn("fail_pattern", msg)
+            self.assertIn("index 0", msg)
+        finally:
+            os.unlink(path)
+
+    def test_fail_pattern_item_as_none_rejected(self):
+        path = self._write({
+            "version": "0.0.0", "source": {"license": "CC-BY-SA-4.0"},
+            "probes": [{
+                "id": "X3", "rule": "r", "input": "i", "expect": "e",
+                "fail_patterns": [None],
+                "pass_patterns": [],
+            }],
+        })
+        try:
+            with self.assertRaises(ValueError) as cm:
+                load_probes(path)
+            self.assertIn("X3", str(cm.exception))
+            self.assertIn("NoneType", str(cm.exception))
+        finally:
+            os.unlink(path)
+
+    def test_pass_patterns_as_dict_rejected(self):
+        path = self._write({
+            "version": "0.0.0", "source": {"license": "CC-BY-SA-4.0"},
+            "probes": [{
+                "id": "X4", "rule": "r", "input": "i", "expect": "e",
+                "fail_patterns": [],
+                "pass_patterns": {"P1": {"id": "P1", "message": "m"}},
+            }],
+        })
+        try:
+            with self.assertRaises(ValueError) as cm:
+                load_probes(path)
+            msg = str(cm.exception)
+            self.assertIn("X4", msg)
+            self.assertIn("pass_patterns", msg)
+        finally:
+            os.unlink(path)
+
+    def test_probes_field_as_dict_rejected(self):
+        path = self._write({
+            "version": "0.0.0", "source": {"license": "CC-BY-SA-4.0"},
+            "probes": {"X5": {"id": "X5", "rule": "r", "input": "i", "expect": "e",
+                               "fail_patterns": [], "pass_patterns": []}},
+        })
+        try:
+            with self.assertRaises(ValueError) as cm:
+                load_probes(path)
+            msg = str(cm.exception)
+            self.assertIn("probes", msg)
+            self.assertIn("array", msg)
+        finally:
+            os.unlink(path)
+
+    def test_probe_entry_as_none_rejected(self):
+        path = self._write({
+            "version": "0.0.0", "source": {"license": "CC-BY-SA-4.0"},
+            "probes": [None],
+        })
+        try:
+            with self.assertRaises(ValueError) as cm:
+                load_probes(path)
+            self.assertIn("index 0", str(cm.exception))
+            self.assertIn("NoneType", str(cm.exception))
+        finally:
+            os.unlink(path)
+
+    def test_top_level_as_list_rejected(self):
+        path = self._write(["a", "b"])
+        try:
+            with self.assertRaises(ValueError) as cm:
+                load_probes(path)
+            self.assertIn("top-level", str(cm.exception))
+            self.assertIn("object", str(cm.exception))
+        finally:
+            os.unlink(path)
+
+
 if __name__ == "__main__":  # pragma: no cover
     unittest.main()

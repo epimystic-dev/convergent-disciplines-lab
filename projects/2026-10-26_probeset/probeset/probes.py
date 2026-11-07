@@ -84,7 +84,11 @@ one at import time, so adding a new check to one side without the other is caugh
 """
 
 
-def _fail(d: Dict[str, Any]) -> FailPattern:
+def _fail(d: Dict[str, Any], probe_id: str = "?", index: int = -1) -> FailPattern:
+    if not isinstance(d, dict):
+        raise ValueError(
+            "probe %r fail_pattern at index %d must be a JSON object; got %s"
+            % (probe_id, index, type(d).__name__))
     custom = d.get("custom", "")
     pattern = d.get("pattern")
     severity = d["severity"]
@@ -113,19 +117,38 @@ def _fail(d: Dict[str, Any]) -> FailPattern:
                        message=d["message"], custom=custom)
 
 
-def _passp(d: Dict[str, Any]) -> PassPattern:
+def _passp(d: Dict[str, Any], probe_id: str = "?", index: int = -1) -> PassPattern:
+    if not isinstance(d, dict):
+        raise ValueError(
+            "probe %r pass_pattern at index %d must be a JSON object; got %s"
+            % (probe_id, index, type(d).__name__))
     return PassPattern(id=d["id"], any_of_names=tuple(d.get("any_of_names", [])),
                        minimum=int(d.get("min", 1)), message=d["message"])
 
 
-def _probe(d: Dict[str, Any]) -> Probe:
+def _probe(d: Dict[str, Any], index: int = -1) -> Probe:
+    if not isinstance(d, dict):
+        raise ValueError(
+            "probe entry at index %d must be a JSON object; got %s"
+            % (index, type(d).__name__))
+    probe_id = d.get("id", "?")
+    fail_raw = d.get("fail_patterns", [])
+    if not isinstance(fail_raw, list):
+        raise ValueError(
+            "probe %r `fail_patterns` must be a JSON array; got %s"
+            % (probe_id, type(fail_raw).__name__))
+    pass_raw = d.get("pass_patterns", [])
+    if not isinstance(pass_raw, list):
+        raise ValueError(
+            "probe %r `pass_patterns` must be a JSON array; got %s"
+            % (probe_id, type(pass_raw).__name__))
     return Probe(
         id=d["id"],
         rule=d["rule"],
         input=d["input"],
         expect=d["expect"],
-        fail_patterns=tuple(_fail(p) for p in d.get("fail_patterns", [])),
-        pass_patterns=tuple(_passp(p) for p in d.get("pass_patterns", [])),
+        fail_patterns=tuple(_fail(p, probe_id, i) for i, p in enumerate(fail_raw)),
+        pass_patterns=tuple(_passp(p, probe_id, i) for i, p in enumerate(pass_raw)),
     )
 
 
@@ -137,10 +160,19 @@ def load_probes(path: Optional[str] = None) -> ProbeSet:
     p = path or PROBES_PATH
     with open(p, encoding="utf-8") as fh:
         data = json.load(fh)
+    if not isinstance(data, dict):
+        raise ValueError(
+            "top-level probes.json must be a JSON object; got %s"
+            % type(data).__name__)
+    probes_raw = data.get("probes", [])
+    if not isinstance(probes_raw, list):
+        raise ValueError(
+            "top-level `probes` field must be a JSON array; got %s"
+            % type(probes_raw).__name__)
     return ProbeSet(
         version=data["version"],
         source=data.get("source", {}),
-        probes=tuple(_probe(x) for x in data["probes"]),
+        probes=tuple(_probe(x, i) for i, x in enumerate(probes_raw)),
     )
 
 
