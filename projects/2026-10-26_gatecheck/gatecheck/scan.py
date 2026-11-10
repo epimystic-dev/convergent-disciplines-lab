@@ -32,7 +32,16 @@ def _subject(record: Dict[str, Any]) -> str:
 
 
 def scan_record(record: Dict[str, Any], disabled: Iterable[str] = ()) -> ScanResult:
-    """Run every enabled rule against one commitment record."""
+    """Run every enabled rule against one commitment record.
+
+    The record MUST be a JSON object; a non-dict record (bare string, number, null, list)
+    is rejected at the entry with a ValueError that names the offending kind. `validate`
+    remains the authoritative shape surface; this check keeps `scan` from crashing with
+    an uninformative AttributeError far from the field that was wrong.
+    """
+    if not isinstance(record, dict):
+        raise ValueError(
+            "commitment record must be a JSON object; got %s" % type(record).__name__)
     disabled_set = set(disabled)
     subject = _subject(record)
     all_findings: List[Finding] = []
@@ -46,7 +55,13 @@ def scan_record(record: Dict[str, Any], disabled: Iterable[str] = ()) -> ScanRes
 
 
 def scan_records(records: Iterable[Dict[str, Any]], disabled: Iterable[str] = ()) -> List[ScanResult]:
-    return [scan_record(r, disabled) for r in records]
+    out: List[ScanResult] = []
+    for i, r in enumerate(records):
+        try:
+            out.append(scan_record(r, disabled))
+        except ValueError as exc:
+            raise ValueError("record %d: %s" % (i, exc))
+    return out
 
 
 def rollup(results: Iterable[ScanResult]) -> str:

@@ -21,7 +21,7 @@ from typing import Any, Dict, List, Optional, Sequence, TextIO
 from . import __version__
 from .findings import Finding, Severity, Verdict, exit_code, sort_findings
 from .rules import ALL_RULES, by_id
-from .scan import ScanResult, rollup, scan_record
+from .scan import ScanResult, rollup, scan_record, scan_records
 from .schema import SCHEMA_PATH, SchemaError, Validator, load_schema
 from .text import fold
 
@@ -141,7 +141,11 @@ def main(argv: Optional[Sequence[str]] = None, stdout: Optional[TextIO] = None,
         if not records:
             _emit(err, "gatecheck: no records in %s" % args.path)
             return 2
-        results = [scan_record(r, disabled=args.disable) for r in records]
+        try:
+            results = scan_records(records, disabled=args.disable)
+        except ValueError as exc:
+            _emit(err, "gatecheck: %s" % exc)
+            return 2
         if args.json:
             return _scan_output_json(results, out, err, args.include_info, args.strict)
         return _scan_output_text(results, out, err, args.include_info, args.strict)
